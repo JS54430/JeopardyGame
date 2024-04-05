@@ -14,9 +14,35 @@
  * Responsibilities of class:
  * GUI file
  */
+
+import java.awt.Color;
+
 /**
  */
 public class JeopardyStyle extends StyleOutline
 {
 	// TODO
+	public JeopardyStyle(Color[] styleColors, String[] styleFonts)
+	{
+		super(styleColors, styleFonts);
+	}
+	
+	public Color[] getStyleColors()
+	{
+		return styleColors;
+	}
+	public String[] getStyleFonts()
+	{
+		return styleFonts;
+	}
+	
+	public void setButtonColor(Color buttonColor) 
+	{
+		this.buttonColor = buttonColor;
+	}
+	
+	public void setHintButtonColor(Color hintButtonColor) 
+	{
+		this.hintButtonColor = hintButtonColor;
+	}
 }

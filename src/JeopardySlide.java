@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.*;
+
 /**
  * Lead Author(s):
  * @author Jake Salzer
@@ -13,6 +16,7 @@
  * 
  * Responsibilities of class:
  * GUI file
+ * Displays question when button on board is clicked
  *
  */
 /**
@@ -20,4 +24,15 @@
 public class JeopardySlide
 {
 	// TODO
+	private ArrayList<String> questionsAnswers; // element from JeopardyQAndA
+	private JeopardyStyle style;
+	private JeopardyButton hintButton;
+	private JeopardyButton submissionButton;
+	// If hint button is pressed, cue JeopardyAnswerPopup to appear
+	
+	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionsAnswers, JeopardyButton hintButton, JeopardyButton submissionButton)
+	{
+		// TODO
+		// GUI stuff
+	}
 }

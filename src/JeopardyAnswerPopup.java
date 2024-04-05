@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 /**
  * Lead Author(s):
  * @author Jake Salzer
@@ -16,8 +19,20 @@
  *
  */
 /**
+ * Functions as an answer popup and hint popup
  */
-public class JeopardyAnswerPopup extends JeopardySlide
+public class JeopardyAnswerPopup extends JFrame
 {
 	// TODO
+	private final int POPUP_LENGTH = 500;
+	private final int POPUP_WIDTH  = 500;
+	private final int DURATION = 10; // seconds for popup to exist before closing
+	
+	private String textToPopup;
+	private JeopardyStyle style;
+	
+	public JeopardyAnswerPopup()
+	{
+		
+	}
 }

@@ -20,5 +20,31 @@
 public class JeopardyModel
 {
 	// TODO
+	// Adjust grid lengths as necessary
+	private int gridHeight = 6;
+	private int gridWidth = 5;
+	private int[][] grid;
+	private String[] categories;
+	private int incrementPointValue = 100;
+	
+	public JeopardyModel(JeopardyQAndA questionsAndAnswers)
+	{
+		
+	}
+	
+	public void makeGrid()
+	{
+		// TODO
+	}
+	
+	public void updatePoints()
+	{
+		// TODO
+	}
+	
+	public void gameOver()
+	{
+		// TODO
+	}
 }
 	

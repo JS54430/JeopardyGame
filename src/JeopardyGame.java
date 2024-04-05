@@ -25,6 +25,11 @@ import javax.swing.*;
 public class JeopardyGame extends JFrame
 {
 	// TODO
+	public JeopardyGame(JeopardyStyle style, JeopardyModel model, JeopardyQAndA questionsAndAnswers)
+	{
+		
+	}
+	
 	public static void main (String args[])
 	{
 		

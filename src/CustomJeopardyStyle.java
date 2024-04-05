@@ -15,9 +15,16 @@
  * GUI file
  * Goes completely off user-input
  */
+
+import java.awt.Color;
+
 /**
  */
 public class CustomJeopardyStyle extends JeopardyStyle
 {
 	// TODO
+	public CustomJeopardyStyle(Color[] styleColors, String[] styleFont)
+	{
+		super(styleColors, styleFont);
+	}
 }
