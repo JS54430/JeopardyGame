@@ -27,6 +27,8 @@ public class JeopardyQAndA
 	
 	// JeopardyQAndA has-a hashtable data structure that has a key of the row and column checked by the array being equal, 
 	// and an element of an array list containing question, answer, hint, and category in that order
+	
+	// Use IO scanner section content in order to read from a CSV for data ease
 	private Hashtable<Integer, ArrayList<String>> questionsAndAnswers; 
 	
 	public JeopardyQAndA()
@@ -43,6 +45,12 @@ public class JeopardyQAndA
 	public void addQuestion(String[] questionAnswerHint)
 	{
 		// TODO
+	}
+	
+	public ArrayList<String> getCategories()
+	{
+		// TODO
+		return null;
 	}
 }
 	

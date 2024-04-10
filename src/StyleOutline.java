@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 
 /**
  * Lead Author(s):
@@ -10,8 +11,11 @@ import java.awt.Color;
  * <<add additional contributors (mentors, tutors, friends) here, with contact information>>
  * 
  * References:
- *  
- * Version/date: Version 1, 3/28/2024
+ * Font (Java platform SE 8 ). (2024, January 8). Moved. https://docs.oracle.com/javase/8/docs/api/java/awt/Font.html
+ * 
+ * Java Font. (n.d.). Code Ease. https://www.codeease.net/programming/java/java-font
+ * 
+ * Version/date: Version 1, 4/10/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -22,45 +26,44 @@ public abstract class StyleOutline
 {
 	// TODO add more to style outline as needed
 	
-	protected Color backgroundColor;
-	protected Color buttonColor;
-	protected Color finishedButtonColor;
-	protected Color hintButtonColor;
+	private Color backgroundColor;
+	private Color buttonColor;
+	private Color finishedButtonColor;
+	private Color hintButtonColor;
 	
-	protected String slideFont;
-	protected String finishedSlideFont; // When slide is clicked
+	private Font slideFont;
+	private Font finishedSlideFont; // When slide is clicked
 	
-	protected String headerFont;
-	protected String buttonFont;
-	protected String hintButtonFont;
-	protected String categoryFont;
+	private Font headerFont;
+	private Font buttonFont;
+	private Font hintButtonFont;
+	private Font categoryFont;
 	
-	protected Color styleColors[];
-	protected String styleFonts[];
-	
-	// Constructor for style outline
-	// ACCESSING COLORS in order: backgroundColor, buttonColor, finishedButtonColor, hintButtonColor
-	// ACCESSING FONTS (Strings) in order: slideFont, finishedSlideFont, headerFont, buttonFont, hintButtonFont, categoryFont
-	public StyleOutline (Color[] styleColors, String[] styleFonts)
+	// Constructor for style outline with parameter list
+	public StyleOutline (Color backgroundColor, Color buttonColor, Color finishedButtonColor, Color hintButtonColor, Font slideFont, Font finishedSlideFont, Font headerFont, Font buttonFont, Font hintButtonFont, Font categoryFont)
 	{
-		this.backgroundColor = styleColors[0];
-		this.buttonColor = styleColors[1];
-		this.finishedButtonColor = styleColors[2];
-		this.hintButtonColor = styleColors[3];
+		this.backgroundColor = backgroundColor;
+		this.buttonColor = buttonColor;
+		this.finishedButtonColor = finishedButtonColor;
+		this.hintButtonColor = hintButtonColor;
 		
-		this.slideFont = styleFonts[0];
-		this.finishedSlideFont = styleFonts[1];
-		this.headerFont = styleFonts[2];
-		this.buttonFont = styleFonts[3];
-		this.hintButtonFont = styleFonts[4];
-		this.categoryFont = styleFonts[5];
+		this.slideFont = slideFont;
+		this.finishedSlideFont = finishedSlideFont;
+		this.headerFont = headerFont;
+		this.buttonFont = buttonFont;
+		this.hintButtonFont = hintButtonFont;
+		this.categoryFont = categoryFont;
 		
-		this.styleColors = styleColors;
-		this.styleFonts = styleFonts;
+		// Sets the arrays for the colors and font arrays respectively
+		setStyleColors();
+		setStyleFonts();
 	}
 	
+	public abstract void setStyleColors();
+	public abstract void setStyleFonts();
+	
 	public abstract Color[] getStyleColors();
-	public abstract String[] getStyleFonts();
+	public abstract Font[] getStyleFonts();
 	
 	public abstract void setButtonColor(Color givenColor);
 	public abstract void setHintButtonColor(Color givenColor);

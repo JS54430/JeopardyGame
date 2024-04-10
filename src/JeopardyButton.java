@@ -18,7 +18,18 @@ import javax.swing.*;
  */
 /**
  */
+
+ // grid of buttons, when clicked , jeopardy slide pops up
+ //
+
+
 public class JeopardyButton extends JButton
 {
 	// TODO
+	// Add more to constructor parameters and constructor as needed
+	// Implement action listener, see fishingGame for example
+	public JeopardyButton(JeopardyStyle style)
+	{
+		
+	}
 }

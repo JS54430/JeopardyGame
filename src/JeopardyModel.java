@@ -9,7 +9,7 @@
  * 
  * References:
  *  
- * Version/date: Version 1, 3/28/2024
+ * Version/date: Version 1, 4/10/2024
  * 
  * Responsibilities of class:
  * Non-GUI file
@@ -29,22 +29,44 @@ public class JeopardyModel
 	
 	public JeopardyModel(JeopardyQAndA questionsAndAnswers)
 	{
-		
+		grid = new int[gridHeight][gridWidth]; 
+		categories = questionsAndAnswers.getCategories();
+
+		makeGrid();
 	}
 	
 	public void makeGrid()
 	{
 		// TODO
+		/*
+		for( int i = 0; i < gridHeight; i++) {
+			for( int j = 0; j < gridWidth; j++) {
+				if (i == 0) {
+					grid [i][j] = categories[j];
+				}
+				else {
+					// TODO
+				}
+			}
+		}
+		*/
+
+
 	}
 	
 	public void updatePoints()
 	{
 		// TODO
+
+		// if player gets question right, it adds the points
+		// from the question to the players points 
+
+
 	}
 	
 	public void gameOver()
 	{
-		// TODO
+		// when you go through all of the questions, the game is over
 	}
 }
 	
