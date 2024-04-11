@@ -13,7 +13,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 3/28/2024
+ * Version/date: Version 1, 4/11/2024
  * 
  * Responsibilities of class:
  * 
@@ -23,5 +23,25 @@ import javax.swing.*;
 
 public class JeopardyButtonListener implements ActionListener
 {
+	private JeopardyModel jeopardyModel;
+	private JeopardyGame jeopardyGame;
+	private JeopardyButton jeopardyButton;
 	
+	/**
+	 * @param jeopardyModel
+	 * @param jeopardyGame
+	 * @param jeopardyButton
+	 */
+	public JeopardyButtonListener(JeopardyModel jeopardyModel, JeopardyGame jeopardyGame, JeopardyButton jeopardyButton)
+	{
+		this.jeopardyModel = jeopardyModel;
+		this.jeopardyGame = jeopardyGame;
+		this.jeopardyButton = jeopardyButton;
+	}
+	
+	// When (usable) button is clicked
+	public void actionPerformed(ActionEvent e)
+	{
+		
+	}
 }

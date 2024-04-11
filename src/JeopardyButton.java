@@ -31,15 +31,30 @@ public class JeopardyButton extends JButton
 	// Implement action listener, see fishingGame for example
 	
 	private Color buttonColor;
+	private int buttonRow;
+	private int buttonColumn;
+	private JeopardyStyle buttonStyle;
 	
-	public JeopardyButton(JeopardyStyle style)
+	public JeopardyButton(int buttonRow, int buttonColumn, JeopardyStyle style)
 	{
-		
+		this.buttonRow = buttonRow;
+		this.buttonColumn = buttonColumn;
+		this.buttonStyle = style;
 	}
 	
 	// Disable button and change color to finished when clicked
 	public void setButtonColor(Color buttonColor) 
 	{
 		this.buttonColor = buttonColor;
+	}
+	
+	public int getRow()
+	{
+		return buttonRow;
+	}
+	
+	public int getColumn()
+	{
+		return buttonColumn;
 	}
 }

@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -12,7 +14,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 3/28/2024
+ * Version/date: Version 1, 4/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -25,9 +27,10 @@ public class JeopardySlide
 {
 	// TODO
 	private ArrayList<String> questionsAnswers; // element from JeopardyQAndA
-	private JeopardyStyle style;
+	private JeopardyStyle slideStyle;
 	private JeopardyButton hintButton;
 	private JeopardyButton submissionButton;
+	private JTextField submissionField;
 	// If hint button is pressed, cue JeopardyAnswerPopup to appear
 	
 	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionsAnswers, JeopardyButton hintButton, JeopardyButton submissionButton)

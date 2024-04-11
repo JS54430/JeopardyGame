@@ -13,7 +13,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 3/28/2024
+ * Version/date: Version 1, 4/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -24,8 +24,27 @@ import javax.swing.*;
 // JeopardyGame is-a JFrame
 public class JeopardyGame extends JFrame
 {
+	private final int WINDOW_HEIGHT = 600;
+	private final int WINDOW_WIDTH = 300;
+	private JButton creditsButton;
+	private JPanel categoryPanel;
+	private JPanel pointQuestionPanel;
+	private JeopardyButton[][] jeopardyGrid;
+	private JeopardyModel jeopardyModel;
+	private JeopardyStyle jeopardyStyle;
+	
 	// TODO
 	public JeopardyGame(JeopardyStyle style, JeopardyModel model, JeopardyQAndA questionsAndAnswers)
+	{
+		
+	}
+	
+	public void loadSlide(JeopardySlide loadedSlide)
+	{
+		
+	}
+	
+	public void loadRegularScreen()
 	{
 		
 	}
