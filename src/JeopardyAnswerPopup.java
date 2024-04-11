@@ -24,8 +24,8 @@ import javax.swing.*;
 public class JeopardyAnswerPopup extends JFrame
 {
 	// TODO
-	private final int POPUP_LENGTH = 500;
-	private final int POPUP_WIDTH  = 500;
+	private final int POPUP_LENGTH = 200;
+	private final int POPUP_WIDTH  = 200;
 	private final int DURATION = 10; // seconds for popup to exist before closing
 	
 	private String textToPopup;
