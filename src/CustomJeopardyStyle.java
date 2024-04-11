@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  * Lead Author(s):
  * @author Jake Salzer
@@ -16,15 +19,18 @@
  * Goes completely off user-input
  */
 
-import java.awt.Color;
-
 /**
  */
 public class CustomJeopardyStyle extends JeopardyStyle
 {
 	// TODO
-	public CustomJeopardyStyle(Color[] styleColors, String[] styleFont)
+	public CustomJeopardyStyle(Color backgroundColor, Color buttonColor, Color finishedButtonColor, Color hintButtonColor, Font slideFont, Font finishedSlideFont, Font headerFont, Font buttonFont, Font hintButtonFont, Font categoryFont)
 	{
-		super(styleColors, styleFont);
+		super(backgroundColor, buttonColor, finishedButtonColor, hintButtonColor, slideFont, finishedSlideFont, headerFont, buttonFont, hintButtonFont, categoryFont);
+	}
+	
+	public CustomJeopardyStyle(Color colorArray[], Font fontArray[])
+	{
+		super(colorArray[0],colorArray[1],colorArray[2],colorArray[3],fontArray[0],fontArray[1],fontArray[2],fontArray[3],fontArray[4],fontArray[5]);
 	}
 }
