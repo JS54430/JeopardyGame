@@ -29,7 +29,8 @@ public class JeopardyQAndA
 	// and an element of an array list containing question, answer, hint, and category in that order
 	
 	// Use IO scanner section content in order to read from a CSV for data ease
-	private Hashtable<Integer, ArrayList<String>> questionsAndAnswers; 
+	private Hashtable<Integer, ArrayList<String>> questionsAndAnswers;
+	private int questionCount = 0;
 	
 	public JeopardyQAndA()
 	{
