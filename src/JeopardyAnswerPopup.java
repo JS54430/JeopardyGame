@@ -31,7 +31,7 @@ public class JeopardyAnswerPopup extends JFrame
 	private String textToPopup;
 	private JeopardyStyle style;
 	
-	public JeopardyAnswerPopup()
+	public JeopardyAnswerPopup(JeopardyStyle style)
 	{
 		
 	}
