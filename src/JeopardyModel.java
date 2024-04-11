@@ -26,10 +26,11 @@ public class JeopardyModel
 	private int[][] grid;
 	private String[] categories;
 	private int incrementPointValue = 100;
+	private JeopardyQAndA questionsAndAnswers;
 	
 	public JeopardyModel(JeopardyQAndA questionsAndAnswers)
 	{
-		grid = new int[gridHeight][gridWidth]; 
+		this.questionsAndAnswers = questionsAndAnswers;
 		categories = questionsAndAnswers.getCategories();
 
 		makeGrid();
@@ -37,6 +38,7 @@ public class JeopardyModel
 	
 	public void makeGrid()
 	{
+		//grid = new int[gridHeight][gridWidth]; 
 		// TODO
 		/*
 		for( int i = 0; i < gridHeight; i++) {
