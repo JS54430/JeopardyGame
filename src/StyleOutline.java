@@ -15,7 +15,7 @@ import java.awt.Font;
  * 
  * Java Font. (n.d.). Code Ease. https://www.codeease.net/programming/java/java-font
  * 
- * Version/date: Version 1, 4/10/2024
+ * Version/date: Version 1, 4/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -63,9 +63,5 @@ public abstract class StyleOutline
 	public abstract void setStyleFonts();
 	
 	public abstract Color[] getStyleColors();
-	public abstract Font[] getStyleFonts();
-	
-	public abstract void setButtonColor(Color givenColor);
-	public abstract void setHintButtonColor(Color givenColor);
-	
+	public abstract Font[] getStyleFonts();	
 }

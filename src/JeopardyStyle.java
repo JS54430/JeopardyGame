@@ -15,7 +15,7 @@ import java.awt.Font;
  * 
  * Java Font. (n.d.). Code Ease. https://www.codeease.net/programming/java/java-font
  *  
- * Version/date: Version 1, 4/10/2024
+ * Version/date: Version 1, 4/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -84,15 +84,5 @@ public class JeopardyStyle extends StyleOutline
 	public Font[] getStyleFonts()
 	{
 		return styleFonts;
-	}
-	
-	public void setButtonColor(Color buttonColor) 
-	{
-		this.buttonColor = buttonColor;
-	}
-	
-	public void setHintButtonColor(Color hintButtonColor) 
-	{
-		this.hintButtonColor = hintButtonColor;
 	}
 }

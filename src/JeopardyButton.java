@@ -1,3 +1,4 @@
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -11,7 +12,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 3/28/2024
+ * Version/date: Version 1, 4/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -28,8 +29,17 @@ public class JeopardyButton extends JButton
 	// TODO
 	// Add more to constructor parameters and constructor as needed
 	// Implement action listener, see fishingGame for example
+	
+	private Color buttonColor;
+	
 	public JeopardyButton(JeopardyStyle style)
 	{
 		
+	}
+	
+	// Disable button and change color to finished when clicked
+	public void setButtonColor(Color buttonColor) 
+	{
+		this.buttonColor = buttonColor;
 	}
 }
