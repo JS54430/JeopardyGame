@@ -66,6 +66,13 @@ class ZJeopardyTest
 	}
 	
 	@Test
+	void testJeopardyGUI()
+	{
+		// JeopardySlide
+		// JeopardyAnswerPopup
+	}
+	
+	@Test
 	void testJeopardyQAndA()
 	{
 		
