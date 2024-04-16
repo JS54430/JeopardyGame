@@ -42,6 +42,14 @@ public class JeopardyButtonListener implements ActionListener
 	// When (usable) button is clicked
 	public void actionPerformed(ActionEvent e)
 	{
+		// Button coordinates for which button was clicked
+		int buttonRow = jeopardyButton.getRow();
+		int buttonColumn = jeopardyButton.getColumn();
+
+		// JeopardyPopUp at button spot
 		
+
+		// Update button to not be clickable
+		jeopardyModel.updateUI();
 	}
 }
