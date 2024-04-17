@@ -18,8 +18,9 @@ import java.awt.*;
  * <<add additional contributors (mentors, tutors, friends) here, with contact information>>
  * 
  * References:
+ * Hashtable toString() method in Java. (2023, February 20). GeeksforGeeks. https://www.geeksforgeeks.org/hashtable-tostring-method-in-java/
  *  
- * Version/date: Version 1, 4/10/2024
+ * Version/date: Version 1, 4/16/2024
  * 
  * Responsibilities of class:
  * Testing file
@@ -75,6 +76,11 @@ class ZJeopardyTest
 	@Test
 	void testJeopardyQAndA()
 	{
+		JeopardyQAndA myExampleAnswersQuestions = new JeopardyQAndA("exampleQAndA.csv");
+		String consoleQAndA = myExampleAnswersQuestions.getQAndA().toString();
+		System.out.println(consoleQAndA);
+		
+		System.out.println(myExampleAnswersQuestions.getCategoryQuestionsAndAnswers(1));
 		
 	}
 }
