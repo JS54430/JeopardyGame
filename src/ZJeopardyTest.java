@@ -54,33 +54,43 @@ class ZJeopardyTest
 		assertEquals(fontValue1, fontValue2);
 	}
 	
-	@Test
-	void testJeopardyModel()
-	{
-		
-	}
-	
-	@Test
-	void testJeopardyGame()
-	{
-		
-	}
-	
-	@Test
-	void testJeopardyGUI()
-	{
-		// JeopardySlide
-		// JeopardyAnswerPopup
-	}
+//	@Test
+//	void testJeopardyModel()
+//	{
+//		
+//	}
+//	
+//	@Test
+//	void testJeopardyGame()
+//	{
+//		
+//	}
+//	
+//	@Test
+//	void testJeopardyGUI()
+//	{
+//		// JeopardySlide
+//		// JeopardyAnswerPopup
+//	}
 	
 	@Test
 	void testJeopardyQAndA()
 	{
-		JeopardyQAndA myExampleAnswersQuestions = new JeopardyQAndA("exampleQAndA.csv");
-		String consoleQAndA = myExampleAnswersQuestions.getQAndA().toString();
-		System.out.println(consoleQAndA);
+		JeopardyQAndA myExampleAnswersQuestions1 = new JeopardyQAndA("exampleQAndA.csv");
+		JeopardyQAndA myExampleAnswersQuestions2 = new JeopardyQAndA("exampleQAndA2.csv");
 		
-		System.out.println(myExampleAnswersQuestions.getCategoryQuestionsAndAnswers(1));
 		
+		String consoleQAndA1 = myExampleAnswersQuestions1.getQAndA().toString();
+		String consoleQAndA2 = myExampleAnswersQuestions2.getQAndA().toString();
+		
+		/*
+		System.out.println(consoleQAndA1);
+		System.out.println(consoleQAndA2);
+		
+		System.out.println(myExampleAnswersQuestions1.getCategoryQuestionsAndAnswers(1));
+		System.out.println(myExampleAnswersQuestions2.getCategoryQuestionsAndAnswers(1));
+		*/
+		
+		assertEquals(consoleQAndA1, consoleQAndA2);
 	}
 }
