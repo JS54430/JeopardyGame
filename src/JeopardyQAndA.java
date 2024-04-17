@@ -67,7 +67,7 @@ public class JeopardyQAndA
 						questionsAndAnswers.put(count, categoryQAndA);
 					 }
 					 categoryQAndA = new ArrayList<Object>(); // Reset categoryQAndA
-					 categoryQAndA.add(data); // Adds new category
+					 categoryQAndA.add(data.substring(2)); // Adds new category
 					 
 					 questionCount = 0;
 					 questionAnswerHintArray = new ArrayList<String>(); // Reset questionAnswerHintArray
