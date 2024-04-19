@@ -34,6 +34,7 @@ public class JeopardyQAndA
 	
 	// Use IO scanner section content in order to read from a CSV for data ease
 	private Hashtable<Integer, ArrayList<Object>> questionsAndAnswers;
+	private ArrayList<String> categories;
 	private int categoryNumber;
 	
 	public JeopardyQAndA(String fileName)
@@ -44,6 +45,7 @@ public class JeopardyQAndA
 		int questionCount = 0;
 		String categoryIndicator = "C-";
 		this.questionsAndAnswers = new Hashtable<Integer, ArrayList<Object>>();
+		this.categories = new ArrayList<String>();
 		
 		try 
 		{
@@ -68,6 +70,7 @@ public class JeopardyQAndA
 					 }
 					 categoryQAndA = new ArrayList<Object>(); // Reset categoryQAndA
 					 categoryQAndA.add(data.substring(2)); // Adds new category
+					 categories.add(data.substring(2));
 					 
 					 questionCount = 0;
 					 questionAnswerHintArray = new ArrayList<String>(); // Reset questionAnswerHintArray
@@ -109,7 +112,6 @@ public class JeopardyQAndA
 		
 	}
 	
-	// hw popup
 	public ArrayList<Object> getCategoryQuestionsAndAnswers(int categoryNumber)
 	{
 		return questionsAndAnswers.get(categoryNumber);
@@ -117,13 +119,17 @@ public class JeopardyQAndA
 	
 	public ArrayList<String> getCategories()
 	{
-		// TODOs
-		return null;
+		return categories;
 	}
 	
 	public Hashtable<Integer, ArrayList<Object>> getQAndA()
 	{
 		return questionsAndAnswers;
+	}
+	
+	public int getNumberOfQuestionsPerCategory()
+	{
+		return getCategoryQuestionsAndAnswers(1).size() - 1;
 	}
 	
 }
