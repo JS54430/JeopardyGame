@@ -29,18 +29,23 @@ public class JeopardyAnswerPopup extends JFrame
 	//private final int DURATION = 5; // seconds for popup to exist before closing
 	
 	private JeopardyStyle style;
-	
 	private JPanel answerPopup; 
 	private JLabel textToPopup;
 
 	
 	public JeopardyAnswerPopup(JeopardyStyle style, boolean correctAnswer)
 	{
+
 		this.style = style;
 		this.setTitle("Popup");
 		this.setSize(POPUP_LENGTH, POPUP_WIDTH);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.style = style;
+
+		this.setTitle("Answer");
+
+		this.setSize(POPUP_LENGTH , POPUP_WIDTH); 
 		
 		this.answerPopup = new JPanel();
 		this.textToPopup = new JLabel();
