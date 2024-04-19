@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Lead Author(s):
  * @author Jake Salzer
@@ -21,42 +23,48 @@ public class JeopardyModel
 {
 	// TODO
 	// Adjust grid lengths as necessary
-	private int gridHeight = 6;
-	private int gridWidth = 5;
-	private int[][] grid;
-	private String[] categories;
+	private int gridHeight;
+	private int gridWidth;
+	private Object[][] grid;
+	private ArrayList<String> categories;
 	private int incrementPointValue = 100;
 	private JeopardyQAndA questionsAndAnswers;
 	
-	public JeopardyModel(JeopardyQAndA questionsAndAnswers)
+	public JeopardyModel(JeopardyQAndA QandA)
 	{
-		this.questionsAndAnswers = questionsAndAnswers;
-		categories = questionsAndAnswers.getCategories();
+		this.questionsAndAnswers = QandA;
+		this.categories = questionsAndAnswers.getCategories();
+		this.gridHeight = questionsAndAnswers.getNumberOfQuestionsPerCategory() + 1;
+		this.gridWidth = categories.size();
 
 		makeGrid();
 	}
 	
 	public void makeGrid()
 	{
-		//grid = new int[gridHeight][gridWidth]; 
-		// TODO
-		/*
-		for( int i = 0; i < gridHeight; i++) {
-			for( int j = 0; j < gridWidth; j++) {
-				if (i == 0) {
-					grid [i][j] = categories[j];
+		this.grid = new Object[gridHeight][gridWidth]; 
+		
+		for(int i = 0; i < gridWidth; i++) {
+			for(int j = 0; j < gridHeight; j++) {
+				if (i == 0) 
+				{
+					this.grid[i][j] = categories.get(j);
 				}
-				else {
-					// TODO
+				else 
+				{
+					this.grid[i][j] = i*incrementPointValue;
 				}
 			}
 		}
-		*/
-
-
 	}
 	
-	public void updatePoints()
+	// Testing function
+	public String getGrid()
+	{
+		return Arrays.deepToString(this.grid);
+	}
+	
+	public void updatePoints(int player, int points)
 	{
 		// TODO
 
