@@ -54,12 +54,14 @@ class ZJeopardyTest
 		assertEquals(fontValue1, fontValue2);
 	}
 	
-//	@Test
-//	void testJeopardyModel()
-//	{
-//		
-//	}
-//	
+	@Test
+	void testJeopardyModel()
+	{
+		JeopardyModel exampleModel = new JeopardyModel(new JeopardyQAndA("exampleQAndA.csv"));
+		String grid = exampleModel.getGrid();
+		assertEquals(grid, "[[Category1, Category2, Category3], [100, 100, 100], [200, 200, 200]]");
+	}
+	
 //	@Test
 //	void testJeopardyGame()
 //	{
@@ -92,5 +94,6 @@ class ZJeopardyTest
 		*/
 		
 		assertEquals(consoleQAndA1, consoleQAndA2);
+		assertEquals(myExampleAnswersQuestions1.getNumberOfQuestionsPerCategory(), myExampleAnswersQuestions2.getNumberOfQuestionsPerCategory()); // 2 == 2
 	}
 }
