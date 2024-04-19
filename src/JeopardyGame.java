@@ -51,6 +51,15 @@ public class JeopardyGame extends JFrame
 	
 	public static void main (String args[])
 	{
+		Font fontEx1 = new Font("Arial", Font.PLAIN, 20);
+		Font fontEx2 = new Font("Times New Roman", Font.PLAIN, 30);
+		Color testColors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.BLACK};
+		Font testFonts[] = {fontEx1, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2};
+		JeopardyStyle styleExample2 = new JeopardyStyle(testColors, testFonts);
 		
+		// JeopardySlide
+		
+		// JeopardyAnswerPopup
+		JeopardyAnswerPopup popupExample = new JeopardyAnswerPopup(styleExample2, true);
 	}
 }

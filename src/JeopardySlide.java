@@ -23,7 +23,7 @@ import java.util.*;
  */
 /**
  */
-public class JeopardySlide
+public class JeopardySlide extends JPanel
 {
 	// TODO
 	private ArrayList<String> questionsAnswers; // element from JeopardyQAndA
@@ -33,7 +33,7 @@ public class JeopardySlide
 	private JTextField submissionField;
 	// If hint button is pressed, cue JeopardyAnswerPopup to appear
 	
-	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionsAnswers, JeopardyButton hintButton, JeopardyButton submissionButton)
+	public JeopardySlide (JeopardyStyle style, JeopardyQAndA questionsAnswers, JeopardyButton hintButton, JeopardyButton submissionButton)
 	{
 		// TODO
 		// GUI stuff

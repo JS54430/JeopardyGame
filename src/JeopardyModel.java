@@ -70,8 +70,6 @@ public class JeopardyModel
 
 		// if player gets question right, it adds the points
 		// from the question to the players points 
-
-
 	}
 	
 	public void gameOver()
