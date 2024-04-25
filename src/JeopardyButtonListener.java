@@ -50,6 +50,6 @@ public class JeopardyButtonListener implements ActionListener
 		
 
 		// Update button to not be clickable
-		jeopardyModel.updateUI();
+		//jeopardyModel.updateUI();
 	}
 }
