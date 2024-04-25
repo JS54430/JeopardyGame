@@ -12,7 +12,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 4/11/2024
+ * Version/date: Version 1, 4/24/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -34,12 +34,15 @@ public class JeopardyButton extends JButton
 	private int buttonRow;
 	private int buttonColumn;
 	private JeopardyStyle buttonStyle;
+	private String text;
 	
-	public JeopardyButton(int buttonRow, int buttonColumn, JeopardyStyle style)
+	public JeopardyButton(int buttonRow, int buttonColumn, JeopardyStyle style, String text)
 	{
 		this.buttonRow = buttonRow;
 		this.buttonColumn = buttonColumn;
 		this.buttonStyle = style;
+		this.text = text;
+		this.setText(text);
 	}
 	
 	// Disable button and change color to finished when clicked
