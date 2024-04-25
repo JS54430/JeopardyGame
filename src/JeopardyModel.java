@@ -11,7 +11,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 4/18/2024
+ * Version/date: Version 1, 4/24/2024
  * 
  * Responsibilities of class:
  * Non-GUI file
@@ -58,10 +58,9 @@ public class JeopardyModel
 		}
 	}
 	
-	// Testing function
-	public String getGrid()
+	public Object[][] getGrid()
 	{
-		return Arrays.deepToString(this.grid);
+		return this.grid;
 	}
 	
 	public void updatePoints(int player, int points)
@@ -74,6 +73,8 @@ public class JeopardyModel
 	
 	public void gameOver()
 	{
+		// TODO
+		
 		// when you go through all of the questions, the game is over
 	}
 }
