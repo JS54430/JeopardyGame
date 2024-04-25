@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 /**
  * Lead Author(s):
@@ -58,8 +59,8 @@ class ZJeopardyTest
 	void testJeopardyModel()
 	{
 		JeopardyModel exampleModel = new JeopardyModel(new JeopardyQAndA("exampleQAndA.csv"));
-		String grid = exampleModel.getGrid();
-		assertEquals(grid, "[[Category1, Category2, Category3], [100, 100, 100], [200, 200, 200]]");
+		Object[][] grid = exampleModel.getGrid();
+		assertEquals(Arrays.deepToString(grid), "[[Category1, Category2, Category3], [100, 100, 100], [200, 200, 200]]");
 	}
 	
 //	@Test
