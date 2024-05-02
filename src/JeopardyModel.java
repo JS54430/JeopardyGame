@@ -11,7 +11,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 4/24/2024
+ * Version/date: Version 1, 5/1/2024
  * 
  * Responsibilities of class:
  * Non-GUI file
@@ -34,7 +34,7 @@ public class JeopardyModel
 	{
 		this.questionsAndAnswers = QandA;
 		this.categories = questionsAndAnswers.getCategories();
-		this.gridHeight = questionsAndAnswers.getNumberOfQuestionsPerCategory() + 1;
+		this.gridHeight = questionsAndAnswers.getNumberOfQuestionsPerCategory();
 		this.gridWidth = categories.size();
 
 		makeGrid();
@@ -44,8 +44,10 @@ public class JeopardyModel
 	{
 		this.grid = new Object[gridHeight][gridWidth]; 
 		
-		for(int i = 0; i < gridWidth; i++) {
-			for(int j = 0; j < gridHeight; j++) {
+		for(int i = 0; i < gridWidth; i++) 
+		{
+			for(int j = 0; j < gridHeight; j++) 
+			{
 				if (i == 0) 
 				{
 					this.grid[i][j] = categories.get(j);
