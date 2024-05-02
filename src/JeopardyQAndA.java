@@ -17,7 +17,7 @@ import java.io.*;
  * 
  * Hashtable put() method in Java. (2018, June 28). GeeksforGeeks. https://www.geeksforgeeks.org/hashtable-put-method-in-java/
  *  
- * Version/date: Version 1, 4/18/2024
+ * Version/date: Version 1, 5/1/2024
  * 
  * Responsibilities of class:
  * Non-GUI file
@@ -65,8 +65,8 @@ public class JeopardyQAndA
 					 // If categoryQAndA has already been through this, add it to the list
 					 if (categoryQAndA != null)
 					 {
-						count++; // increase count for keeping track of categories
 						questionsAndAnswers.put(count, categoryQAndA);
+						count++; // increase count for keeping track of categories
 					 }
 					 categoryQAndA = new ArrayList<Object>(); // Reset categoryQAndA
 					 categoryQAndA.add(data.substring(2)); // Adds new category
@@ -90,9 +90,9 @@ public class JeopardyQAndA
 				 }
 			}
 			
-			count++;
 			questionsAndAnswers.put(count, categoryQAndA); // Adds last category
 			categoryNumber = count;
+			count++;
 		}
 		
 		catch (FileNotFoundException e) 
@@ -130,6 +130,11 @@ public class JeopardyQAndA
 	public int getNumberOfQuestionsPerCategory()
 	{
 		return getCategoryQuestionsAndAnswers(1).size() - 1;
+	}
+	
+	public ArrayList<String> getQuestionContent(int row, int column)
+	{
+		return (ArrayList<String>) questionsAndAnswers.get(row).get(column+1);
 	}
 	
 }
