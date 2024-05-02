@@ -21,7 +21,7 @@ import java.util.Arrays;
  * References:
  * Hashtable toString() method in Java. (2023, February 20). GeeksforGeeks. https://www.geeksforgeeks.org/hashtable-tostring-method-in-java/
  *  
- * Version/date: Version 1, 4/18/2024
+ * Version/date: Version 1, 5/1/2024
  * 
  * Responsibilities of class:
  * Testing file
@@ -60,7 +60,7 @@ class ZJeopardyTest
 	{
 		JeopardyModel exampleModel = new JeopardyModel(new JeopardyQAndA("exampleQAndA.csv"));
 		Object[][] grid = exampleModel.getGrid();
-		assertEquals(Arrays.deepToString(grid), "[[Category1, Category2, Category3], [100, 100, 100], [200, 200, 200]]");
+		assertEquals(Arrays.deepToString(grid), "[[Category1, Category2, Category3, Category4, Category5, Category6], [100, 100, 100, 100, 100, 100], [200, 200, 200, 200, 200, 200], [300, 300, 300, 300, 300, 300], [400, 400, 400, 400, 400, 400], [500, 500, 500, 500, 500, 500]]");
 	}
 	
 //	@Test
@@ -81,28 +81,24 @@ class ZJeopardyTest
 		// JeopardySlide
 		
 		// JeopardyAnswerPopup
-		JeopardyAnswerPopup popupExample = new JeopardyAnswerPopup(styleExample2, false);
+		JeopardyAnswerPopup popupExample = new JeopardyAnswerPopup(styleExample2, false, "The Correct Answer");
 	}
 	
 	@Test
 	void testJeopardyQAndA()
 	{
 		JeopardyQAndA myExampleAnswersQuestions1 = new JeopardyQAndA("exampleQAndA.csv");
-		JeopardyQAndA myExampleAnswersQuestions2 = new JeopardyQAndA("exampleQAndA2.csv");
-		
-		
-		String consoleQAndA1 = myExampleAnswersQuestions1.getQAndA().toString();
-		String consoleQAndA2 = myExampleAnswersQuestions2.getQAndA().toString();
-		
+	
 		/*
+		String consoleQAndA1 = myExampleAnswersQuestions1.getQAndA().toString();
+		
 		System.out.println(consoleQAndA1);
-		System.out.println(consoleQAndA2);
 		
 		System.out.println(myExampleAnswersQuestions1.getCategoryQuestionsAndAnswers(1));
-		System.out.println(myExampleAnswersQuestions2.getCategoryQuestionsAndAnswers(1));
+		
+		System.out.println(myExampleAnswersQuestions1.getQuestionContent(0,0));
 		*/
 		
-		assertEquals(consoleQAndA1, consoleQAndA2);
-		assertEquals(myExampleAnswersQuestions1.getNumberOfQuestionsPerCategory(), myExampleAnswersQuestions2.getNumberOfQuestionsPerCategory()); // 2 == 2
+		assertEquals(myExampleAnswersQuestions1.getQuestionContent(0,0).toString(), "[1Q1, 1A1, 1H1]");
 	}
 }
