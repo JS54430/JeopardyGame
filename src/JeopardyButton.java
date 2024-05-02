@@ -12,7 +12,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 4/24/2024
+ * Version/date: Version 1, 5/1/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -30,12 +30,13 @@ public class JeopardyButton extends JButton
 	// Add more to constructor parameters and constructor as needed
 	// Implement action listener, see fishingGame for example
 	
-	private Color buttonColor;
-	private int buttonRow;
-	private int buttonColumn;
-	private JeopardyStyle buttonStyle;
-	private String text;
+	private Color buttonColor; // JeopardyButton has-a color
+	private int buttonRow; // JeopardyButton has-a int row
+	private int buttonColumn; // JeopardyButton has-a int column
+	private JeopardyStyle buttonStyle; // JeopardyButton has-a style
+	private String text; // JeopardyButton has text
 	
+	// Constructor
 	public JeopardyButton(int buttonRow, int buttonColumn, JeopardyStyle style, String text)
 	{
 		this.buttonRow = buttonRow;
@@ -51,11 +52,13 @@ public class JeopardyButton extends JButton
 		this.buttonColor = buttonColor;
 	}
 	
+	// returns row
 	public int getRow()
 	{
 		return buttonRow;
 	}
 	
+	// returns column
 	public int getColumn()
 	{
 		return buttonColumn;
