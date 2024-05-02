@@ -12,7 +12,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 4/18/2024
+ * Version/date: Version 1, 5/1/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -33,7 +33,7 @@ public class JeopardyAnswerPopup extends JFrame
 	private JLabel textToPopup;
 
 	
-	public JeopardyAnswerPopup(JeopardyStyle style, boolean correctAnswer)
+	public JeopardyAnswerPopup(JeopardyStyle style, boolean correctAnswer, String answer)
 	{
 
 		this.style = style;
@@ -52,12 +52,34 @@ public class JeopardyAnswerPopup extends JFrame
 		
 		if (correctAnswer)
 		{
-			textToPopup.setText("Correct answer!");
+			textToPopup.setText("Correct answer!\n"+answer);
 		}
 		else
 		{
-			textToPopup.setText("Wrong answer.");
+			textToPopup.setText("Wrong answer.\n"+answer);
 		}
+		
+		answerPopup.add(textToPopup);
+		this.add(answerPopup);
+		this.setVisible(true);
+	}
+	
+	public JeopardyAnswerPopup(JeopardyStyle style, String hint)
+	{
+
+		this.style = style;
+		this.setTitle("Popup");
+		this.setSize(POPUP_LENGTH, POPUP_WIDTH);
+		this.setLayout(new BorderLayout());
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.style = style;
+
+		this.setTitle("Hint");
+
+		this.setSize(POPUP_LENGTH , POPUP_WIDTH); 
+		
+		this.answerPopup = new JPanel();
+		this.textToPopup = new JLabel(hint);
 		
 		answerPopup.add(textToPopup);
 		this.add(answerPopup);
