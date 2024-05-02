@@ -14,7 +14,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 4/11/2024
+ * Version/date: Version 1, 5/1/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -25,17 +25,21 @@ import java.util.*;
  */
 public class JeopardySlide extends JPanel
 {
-	// TODO
-	private ArrayList<String> questionsAnswers; // element from JeopardyQAndA
+	private ArrayList<String> questionContent; // element from JeopardyQAndA
 	private JeopardyStyle slideStyle;
 	private JeopardyButton hintButton;
 	private JeopardyButton submissionButton;
 	private JTextField submissionField;
 	// If hint button is pressed, cue JeopardyAnswerPopup to appear
 	
-	public JeopardySlide (JeopardyStyle style, JeopardyQAndA questionsAnswers, JeopardyButton hintButton, JeopardyButton submissionButton)
+	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionContent)
 	{
 		// TODO
 		// GUI stuff
+		this.slideStyle = style;
+		this.questionContent = questionContent;
+		
+		this.setLayout(new BorderLayout());
+		
 	}
 }
