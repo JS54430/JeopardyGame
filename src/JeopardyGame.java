@@ -14,7 +14,7 @@ import javax.swing.*;
  * References:
  * How to remove all components from a JFrame in Java? (n.d.). Stack Overflow. https://stackoverflow.com/questions/9347076/how-to-remove-all-components-from-a-jframe-in-java
  *  
- * Version/date: Version 1, 4/24/2024
+ * Version/date: Version 1, 5/1/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -26,7 +26,7 @@ import javax.swing.*;
 public class JeopardyGame extends JFrame
 {
 	private final int WINDOW_HEIGHT = 600;
-	private final int WINDOW_WIDTH = 300;
+	private final int WINDOW_WIDTH = 600;
 	private JButton creditsButton;
 	private JPanel categoryPanel;
 	private JPanel pointQuestionPanel;
@@ -57,7 +57,7 @@ public class JeopardyGame extends JFrame
 		
 		// JPanel declarations
 		categoryPanel = new JPanel(new GridLayout());
-		pointQuestionPanel = new JPanel(new GridLayout());
+		pointQuestionPanel = new JPanel();
 		pointButtonRow = new JPanel(new GridLayout());
 		gamePanel = new JPanel(new BorderLayout());
 		
@@ -79,10 +79,10 @@ public class JeopardyGame extends JFrame
 			{
 				for (int k = 0; k<grid[j].length; k++)
 				{
-					JeopardyButton button = new JeopardyButton(j, k, jeopardyStyle, (String) grid[j][k]);
+					JeopardyButton button = new JeopardyButton(j, k, jeopardyStyle, grid[j][k].toString());
 					jeopardyGrid[j][k] = button;
 					
-					button.addActionListener(new JeopardyButtonListener(model, this, button));
+					button.addActionListener(new JeopardyButtonListener(jeopardyModel, this, this.questionsAndAnswers, jeopardyStyle, button));
 					
 					pointButtonRow.add(button);
 				}
@@ -91,8 +91,8 @@ public class JeopardyGame extends JFrame
 			}
 		}
 		
-		gamePanel.add(categoryPanel);
-		gamePanel.add(pointQuestionPanel);
+		gamePanel.add(categoryPanel, BorderLayout.NORTH);
+		gamePanel.add(pointQuestionPanel, BorderLayout.CENTER);
 		
 		this.add(gamePanel);
 		
@@ -123,7 +123,7 @@ public class JeopardyGame extends JFrame
 	
 	public static void main (String args[])
 	{
-		/*
+		
 		Font fontEx1 = new Font("Arial", Font.PLAIN, 20);
 		Font fontEx2 = new Font("Times New Roman", Font.PLAIN, 30);
 		Color testColors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.BLACK};
@@ -133,7 +133,14 @@ public class JeopardyGame extends JFrame
 		// JeopardySlide
 		
 		// JeopardyAnswerPopup
+		/*
 		JeopardyAnswerPopup popupExample = new JeopardyAnswerPopup(styleExample2, true);
 		*/
+		
+		JeopardyQAndA exampleQAndA = new JeopardyQAndA("exampleQAndA.csv");
+		
+		JeopardyModel exampleModel = new JeopardyModel(exampleQAndA);
+		
+		JeopardyGame exampleGame = new JeopardyGame(styleExample2, exampleModel, exampleQAndA);
 	}
 }
