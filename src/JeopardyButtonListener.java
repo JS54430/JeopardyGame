@@ -66,8 +66,5 @@ public class JeopardyButtonListener implements ActionListener
 		// TODO Figure out loadSlide
 		jeopardyGame.loadSlide(new JeopardySlide(jeopardyStyle, questionContent));
 		// JeopardyPopUp at button spot
-			
-		
-		//jeopardyModel.updateUI();
 	}
 }

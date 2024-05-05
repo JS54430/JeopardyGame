@@ -36,11 +36,19 @@ public class JeopardyButton extends JButton
 	private JeopardyStyle buttonStyle; // JeopardyButton has-a style
 	private String text; // JeopardyButton has text
 	
-	// Constructor
+	// Constructor for grid
 	public JeopardyButton(int buttonRow, int buttonColumn, JeopardyStyle style, String text)
 	{
 		this.buttonRow = buttonRow;
 		this.buttonColumn = buttonColumn;
+		this.buttonStyle = style;
+		this.text = text;
+		this.setText(text);
+	}
+	
+	// Constructor for slide
+	public JeopardyButton(JeopardyStyle style, String text)
+	{
 		this.buttonStyle = style;
 		this.text = text;
 		this.setText(text);
