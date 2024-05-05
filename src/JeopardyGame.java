@@ -14,7 +14,7 @@ import javax.swing.*;
  * References:
  * How to remove all components from a JFrame in Java? (n.d.). Stack Overflow. https://stackoverflow.com/questions/9347076/how-to-remove-all-components-from-a-jframe-in-java
  *  
- * Version/date: Version 1, 5/1/2024
+ * Version/date: Version 1, 5/4/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -25,8 +25,8 @@ import javax.swing.*;
 // JeopardyGame is-a JFrame
 public class JeopardyGame extends JFrame
 {
-	private final int WINDOW_HEIGHT = 600;
-	private final int WINDOW_WIDTH = 600;
+	private final int WINDOW_HEIGHT = 500;
+	private final int WINDOW_WIDTH = 500;
 	private JButton creditsButton;
 	private JPanel categoryPanel;
 	private JPanel pointQuestionPanel;
@@ -109,16 +109,31 @@ public class JeopardyGame extends JFrame
 	
 	public void loadSlide(JeopardySlide loadedSlide)
 	{
-		 this.getContentPane().removeAll();
-		 this.repaint();
-		 this.add(loadedSlide, BorderLayout.CENTER);
+		// TODO Get this to display properly
+		// BUG: slide not displaying, localized to this function
+		this.getContentPane().removeAll();
+		this.add(loadedSlide, BorderLayout.CENTER);
+		this.repaint();
+		
+		
+		// TEST LOADED SLIDE WHILE GUI ISN'T WORKING PROPERLY
+		JFrame test = new JFrame();
+		test.setTitle("Popup");
+		test.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		test.setLayout(new BorderLayout());
+		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		test.setTitle("Answer");
+		
+		test.add(loadedSlide);
+		
+		test.setVisible(true);
 	}
 	
 	public void loadRegularScreen()
 	{
 		this.getContentPane().removeAll();
-		this.repaint();
 		this.add(gamePanel, BorderLayout.CENTER);
+		this.repaint();
 	}
 	
 	public static void main (String args[])
@@ -133,9 +148,9 @@ public class JeopardyGame extends JFrame
 		// JeopardySlide
 		
 		// JeopardyAnswerPopup
-		/*
-		JeopardyAnswerPopup popupExample = new JeopardyAnswerPopup(styleExample2, true);
-		*/
+		
+		// new JeopardyAnswerPopup(styleExample2, true, "Answer");
+		
 		
 		JeopardyQAndA exampleQAndA = new JeopardyQAndA("exampleQAndA.csv");
 		
