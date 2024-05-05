@@ -11,8 +11,10 @@ import javax.swing.*;
  * <<add additional contributors (mentors, tutors, friends) here, with contact information>>
  * 
  * References:
+ * 
+ * "Closing on a Single Window Closes All the Frames in Java." Stack Overflow, stackoverflow.com/questions/9906222/closing-on-a-single-window-closes-all-the-frames-in-java.
  *  
- * Version/date: Version 1, 5/4/2024
+ * Version/date: Version 1, 5/5/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -58,6 +60,7 @@ public class JeopardyAnswerPopup extends JFrame
 		
 		answerPopup.add(textToPopup);
 		this.add(answerPopup);
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setVisible(true);
 	}
 	
@@ -80,6 +83,7 @@ public class JeopardyAnswerPopup extends JFrame
 		
 		answerPopup.add(textToPopup);
 		this.add(answerPopup);
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setVisible(true);
 	}
 }
