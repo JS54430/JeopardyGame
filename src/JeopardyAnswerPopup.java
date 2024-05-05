@@ -12,7 +12,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/1/2024
+ * Version/date: Version 1, 5/4/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -41,22 +41,19 @@ public class JeopardyAnswerPopup extends JFrame
 		this.setSize(POPUP_LENGTH, POPUP_WIDTH);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.style = style;
 
 		this.setTitle("Answer");
-
-		this.setSize(POPUP_LENGTH , POPUP_WIDTH); 
 		
 		this.answerPopup = new JPanel();
 		this.textToPopup = new JLabel();
 		
 		if (correctAnswer)
 		{
-			textToPopup.setText("Correct answer!\n"+answer);
+			textToPopup.setText("Correct answer!\n");
 		}
 		else
 		{
-			textToPopup.setText("Wrong answer.\n"+answer);
+			textToPopup.setText("Wrong answer.\nAnswer:"+answer);
 		}
 		
 		answerPopup.add(textToPopup);
