@@ -14,7 +14,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/1/2024
+ * Version/date: Version 1, 5/4/2024
  * 
  * Responsibilities of class:
  * 
@@ -24,13 +24,37 @@ import java.util.*;
 
 public class SlideButtonListener implements ActionListener
 {
+	private JeopardyStyle jeopardyStyle;
 	private JeopardyButton jeopardyButton;
 	private String buttonBehavior;
+	private ArrayList<String> questionContent;
+	private String playerAnswer;
+	private String trueAnswer;
 	
-	public SlideButtonListener(JeopardyButton jeopardyButton, String buttonBehavior)
+	// Hint listener
+	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent)
 	{
+		this.jeopardyStyle = jeopardyStyle;
 		this.jeopardyButton = jeopardyButton;
 		this.buttonBehavior = buttonBehavior;
+		this.questionContent = questionContent;
+	}
+	
+	// Answer listener
+	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent, JTextField submissionField)
+	{
+		this.jeopardyStyle = jeopardyStyle;
+		this.jeopardyButton = jeopardyButton;
+		this.buttonBehavior = buttonBehavior;
+		this.questionContent = questionContent;
+		this.playerAnswer = submissionField.getText();
+	}
+	
+	// Determines if the answer is correct or incorrect
+	public boolean determineAnswer()
+	{
+		this.trueAnswer = questionContent.get(1);
+		return trueAnswer == playerAnswer;
 	}
 	
 	
@@ -43,12 +67,14 @@ public class SlideButtonListener implements ActionListener
 		{
 			// Display hint
 			// Use hint constructor
+			String hint = questionContent.get(2);
+			new JeopardyAnswerPopup(jeopardyStyle, hint);
 		}
 		else
 		{
 			// Answer behavior
-			// JeopardyAnswerPopup popupExample = new JeopardyAnswerPopup(styleExample2, false);
 			// Use answer constructor
+			new JeopardyAnswerPopup(jeopardyStyle, determineAnswer(), trueAnswer);
 		}
 	}
 }
