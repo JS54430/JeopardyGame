@@ -26,8 +26,8 @@ import javax.swing.*;
 public class JeopardyAnswerPopup extends JFrame
 {
 	// TODO
-	private final int POPUP_LENGTH = 200;
-	private final int POPUP_WIDTH  = 200;
+	private final int POPUP_HEIGHT = 100;
+	private final int POPUP_WIDTH  = 300;
 	//private final int DURATION = 5; // seconds for popup to exist before closing
 	
 	private JeopardyStyle style;
@@ -40,7 +40,7 @@ public class JeopardyAnswerPopup extends JFrame
 
 		this.style = style;
 		this.setTitle("Popup");
-		this.setSize(POPUP_LENGTH, POPUP_WIDTH);
+		this.setSize(POPUP_HEIGHT, POPUP_WIDTH);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -51,11 +51,11 @@ public class JeopardyAnswerPopup extends JFrame
 		
 		if (correctAnswer)
 		{
-			textToPopup.setText("Correct answer!\n");
+			textToPopup.setText("Correct answer!");
 		}
 		else
 		{
-			textToPopup.setText("Wrong answer.\nAnswer:"+answer);
+			textToPopup.setText("Wrong answer. Correct answer:"+answer);
 		}
 		
 		answerPopup.add(textToPopup);
@@ -69,14 +69,14 @@ public class JeopardyAnswerPopup extends JFrame
 
 		this.style = style;
 		this.setTitle("Popup");
-		this.setSize(POPUP_LENGTH, POPUP_WIDTH);
+		this.setSize(POPUP_HEIGHT, POPUP_WIDTH);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.style = style;
 
 		this.setTitle("Hint");
 
-		this.setSize(POPUP_LENGTH , POPUP_WIDTH); 
+		this.setSize(POPUP_HEIGHT , POPUP_WIDTH); 
 		
 		this.answerPopup = new JPanel();
 		this.textToPopup = new JLabel(hint);

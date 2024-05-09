@@ -31,10 +31,11 @@ public class JeopardySlide extends JPanel
 	private JeopardyButton submissionButton;
 	private JTextField submissionField;
 	private JeopardyButton hintButton;
+	private JeopardyGame jeopardyGame;
 
 	// If hint button is pressed, cue JeopardyAnswerPopup to appear
 	
-	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionContent)
+	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionContent, JeopardyGame jeopardyGame)
 	{
 		// TODO
 		// GUI stuff
@@ -43,12 +44,13 @@ public class JeopardySlide extends JPanel
 		this.setLayout(new BorderLayout());
 		
 		// Top
-		this.directions = new JLabel("Submit the answer to the following question\n"+questionContent.get(0));
+		this.directions = new JLabel("Submit the answer to the following question: "+questionContent.get(0));
 		
 		// Center
 		this.submissionField = new JTextField();
 		this.submissionButton = new JeopardyButton(slideStyle, "Submit Answer");
-		submissionButton.addActionListener(new SlideButtonListener(slideStyle, submissionButton, "Answer", this.questionContent, submissionField));
+		this.jeopardyGame = jeopardyGame;
+		submissionButton.addActionListener(new SlideButtonListener(slideStyle, submissionButton, "Answer", this.questionContent, submissionField, this.jeopardyGame));
 		
 		// Bottom
 		this.hintButton = new JeopardyButton(slideStyle, "Hint");

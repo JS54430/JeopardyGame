@@ -30,6 +30,7 @@ public class SlideButtonListener implements ActionListener
 	private ArrayList<String> questionContent;
 	private String playerAnswer;
 	private String trueAnswer;
+	private JeopardyGame jeopardyGame;
 	
 	// Hint listener
 	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent)
@@ -41,13 +42,14 @@ public class SlideButtonListener implements ActionListener
 	}
 	
 	// Answer listener
-	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent, JTextField submissionField)
+	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent, JTextField submissionField, JeopardyGame jeopardyGame)
 	{
 		this.jeopardyStyle = jeopardyStyle;
 		this.jeopardyButton = jeopardyButton;
 		this.buttonBehavior = buttonBehavior;
 		this.questionContent = questionContent;
 		this.playerAnswer = submissionField.getText();
+		this.jeopardyGame = jeopardyGame;
 	}
 	
 	// Determines if the answer is correct or incorrect
@@ -75,6 +77,7 @@ public class SlideButtonListener implements ActionListener
 			// Answer behavior
 			// Use answer constructor
 			new JeopardyAnswerPopup(jeopardyStyle, determineAnswer(), trueAnswer);
+			jeopardyGame.loadRegularScreen();
 		}
 	}
 }

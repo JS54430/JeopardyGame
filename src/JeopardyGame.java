@@ -37,6 +37,8 @@ public class JeopardyGame extends JFrame
 	private JeopardyStyle jeopardyStyle;
 	private JeopardyQAndA questionsAndAnswers;
 	
+	private JPanel currentPanel;
+	
 	// TODO
 	public JeopardyGame(JeopardyStyle style, JeopardyModel model, JeopardyQAndA questionsAndAnswers)
 	{
@@ -94,7 +96,14 @@ public class JeopardyGame extends JFrame
 		gamePanel.add(categoryPanel, BorderLayout.NORTH);
 		gamePanel.add(pointQuestionPanel, BorderLayout.CENTER);
 		
+		
 		this.add(gamePanel);
+		
+		/*
+		this.currentPanel = new JPanel();
+		this.currentPanel.add(gamePanel);
+		this.add(currentPanel);
+		*/
 		
 		// Implement any other final GUI stuff here
 		/*
@@ -109,14 +118,27 @@ public class JeopardyGame extends JFrame
 	
 	public void loadSlide(JeopardySlide loadedSlide)
 	{
+		System.out.println("Test");
 		// TODO Get this to display properly
 		// BUG: slide not displaying, localized to this function
-		this.getContentPane().removeAll();
-		this.add(loadedSlide, BorderLayout.CENTER);
+		
+		this.getContentPane().remove(gamePanel);
+		this.currentPanel = loadedSlide;
+		this.add(currentPanel, BorderLayout.CENTER);
 		this.repaint();
 		
+		// Setting size updates the GUI for some reason
+		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT+1);
+		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		
+		/*
+		this.currentPanel.remove(gamePanel);
+		this.currentPanel.add(loadedSlide);
+		this.currentPanel.repaint();
+		*/
 		
 		// TEST LOADED SLIDE WHILE GUI ISN'T WORKING PROPERLY
+		/*
 		JFrame test = new JFrame();
 		test.setTitle("Popup");
 		test.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -127,6 +149,7 @@ public class JeopardyGame extends JFrame
 		test.add(loadedSlide);
 		
 		test.setVisible(true);
+		*/
 	}
 	
 	public void loadRegularScreen()
@@ -134,6 +157,9 @@ public class JeopardyGame extends JFrame
 		this.getContentPane().removeAll();
 		this.add(gamePanel, BorderLayout.CENTER);
 		this.repaint();
+		
+		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT+1);
+		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
 	
 	public static void main (String args[])
