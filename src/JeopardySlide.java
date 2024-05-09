@@ -70,7 +70,5 @@ public class JeopardySlide extends JPanel
 		this.add(bottom, BorderLayout.SOUTH);
 
 		this.setVisible(true);
-		
-		//System.out.println("slide exists"); //debug
 	}
 }

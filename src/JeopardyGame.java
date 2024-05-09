@@ -99,12 +99,6 @@ public class JeopardyGame extends JFrame
 		
 		this.add(gamePanel);
 		
-		/*
-		this.currentPanel = new JPanel();
-		this.currentPanel.add(gamePanel);
-		this.add(currentPanel);
-		*/
-		
 		// Implement any other final GUI stuff here
 		/*
 		 * 
@@ -118,10 +112,6 @@ public class JeopardyGame extends JFrame
 	
 	public void loadSlide(JeopardySlide loadedSlide)
 	{
-		System.out.println("Test");
-		// TODO Get this to display properly
-		// BUG: slide not displaying, localized to this function
-		
 		this.getContentPane().remove(gamePanel);
 		this.currentPanel = loadedSlide;
 		this.add(currentPanel, BorderLayout.CENTER);
@@ -130,26 +120,6 @@ public class JeopardyGame extends JFrame
 		// Setting size updates the GUI for some reason
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT+1);
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		
-		/*
-		this.currentPanel.remove(gamePanel);
-		this.currentPanel.add(loadedSlide);
-		this.currentPanel.repaint();
-		*/
-		
-		// TEST LOADED SLIDE WHILE GUI ISN'T WORKING PROPERLY
-		/*
-		JFrame test = new JFrame();
-		test.setTitle("Popup");
-		test.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		test.setLayout(new BorderLayout());
-		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		test.setTitle("Answer");
-		
-		test.add(loadedSlide);
-		
-		test.setVisible(true);
-		*/
 	}
 	
 	public void loadRegularScreen()
@@ -170,14 +140,7 @@ public class JeopardyGame extends JFrame
 		Color testColors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.BLACK};
 		Font testFonts[] = {fontEx1, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2};
 		JeopardyStyle styleExample2 = new JeopardyStyle(testColors, testFonts);
-		
-		// JeopardySlide
-		
-		// JeopardyAnswerPopup
-		
-		// new JeopardyAnswerPopup(styleExample2, true, "Answer");
-		
-		
+					
 		JeopardyQAndA exampleQAndA = new JeopardyQAndA("exampleQAndA.csv");
 		
 		JeopardyModel exampleModel = new JeopardyModel(exampleQAndA);

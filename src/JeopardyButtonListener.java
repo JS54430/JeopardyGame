@@ -62,9 +62,6 @@ public class JeopardyButtonListener implements ActionListener
 		// Update button to not be clickable
 		jeopardyButton.setEnabled(false);
 				
-				
-		// TODO Figure out loadSlide
 		jeopardyGame.loadSlide(new JeopardySlide(jeopardyStyle, questionContent, jeopardyGame));
-		// JeopardyPopUp at button spot
 	}
 }
