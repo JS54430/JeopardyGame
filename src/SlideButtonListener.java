@@ -77,7 +77,7 @@ public class SlideButtonListener implements ActionListener
 			// Display hint
 			// Use hint constructor
 			String hint = questionContent.get(2);
-			new JeopardyAnswerPopup(jeopardyStyle, hint);
+			new JeopardyHintPopup(jeopardyStyle, hint);
 		}
 		else
 		{

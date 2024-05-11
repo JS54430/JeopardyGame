@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 /**
  * Lead Author(s):
@@ -21,51 +20,43 @@ import javax.swing.*;
  *
  */
 /**
- * Functions as an answer popup
+ * Functions as a hint popup
  */
-public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
+public class JeopardyHintPopup extends JFrame implements StyleMethods
 {
 	private final int POPUP_HEIGHT = 300;
 	private final int POPUP_WIDTH  = 100;
 	//private final int DURATION = 5; // seconds for popup to exist before closing
 	
 	private JeopardyStyle style;
-	private JPanel answerPopup; 
+	private JPanel hintPopup; 
 	private JLabel textToPopup;
-
 	
-	public JeopardyAnswerPopup(JeopardyStyle style, boolean correctAnswer, String answer)
+	public JeopardyHintPopup(JeopardyStyle style, String hint)
 	{
-
 		this.style = style;
 		this.setTitle("Popup");
 		this.setSize(POPUP_HEIGHT, POPUP_WIDTH);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.style = style;
 
-		this.setTitle("Answer");
+		this.setTitle("Hint");
+
+		this.setSize(POPUP_HEIGHT , POPUP_WIDTH); 
 		
-		this.answerPopup = new JPanel();
-		this.textToPopup = new JLabel();
-		
-		if (correctAnswer)
-		{
-			textToPopup.setText("Correct answer!");
-		}
-		else
-		{
-			textToPopup.setText("Wrong answer. Correct answer: "+answer);
-		}
+		this.hintPopup = new JPanel();
+		this.textToPopup = new JLabel(hint);
 		
 		setColors();
 		setFonts();
 		
-		answerPopup.add(textToPopup);
-		this.add(answerPopup);
+		hintPopup.add(textToPopup);
+		this.add(hintPopup);
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setVisible(true);
 	}
-
+	
 	@Override
 	public void setColors()
 	{
