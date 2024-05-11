@@ -12,7 +12,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/10/2024
+ * Version/date: Version 1, 5/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -23,10 +23,9 @@ import javax.swing.*;
  // grid of buttons, when clicked , jeopardy slide pops up
  //
 
-
+// JeopardyButton is-a JButton, uses StyleMethods
 public class JeopardyButton extends JButton implements StyleMethods
 {
-	// TODO
 	// Add more to constructor parameters and constructor as needed
 	// Implement action listener, see fishingGame for example
 	

@@ -17,7 +17,7 @@ import java.io.*;
  * 
  * Hashtable put() method in Java. (2018, June 28). GeeksforGeeks. https://www.geeksforgeeks.org/hashtable-put-method-in-java/
  *  
- * Version/date: Version 1, 5/1/2024
+ * Version/date: Version 1, 5/11/2024
  * 
  * Responsibilities of class:
  * Non-GUI file
@@ -27,15 +27,12 @@ import java.io.*;
  */
 public class JeopardyQAndA
 {
-	// TODO
-	
 	// JeopardyQAndA has-a hashtable data structure that has a key of the row and column checked by the array being equal, 
 	// and an element of an array list containing question, answer, hint, and category in that order
 	
 	// Use IO scanner section content in order to read from a CSV for data ease
 	private Hashtable<Integer, ArrayList<Object>> questionsAndAnswers;
 	private ArrayList<String> categories;
-	private int categoryNumber;
 	
 	public JeopardyQAndA(String fileName)
 	{
@@ -91,7 +88,6 @@ public class JeopardyQAndA
 			}
 			
 			questionsAndAnswers.put(count, categoryQAndA); // Adds last category
-			categoryNumber = count;
 			count++;
 		}
 		

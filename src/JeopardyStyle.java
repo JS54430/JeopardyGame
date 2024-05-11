@@ -15,7 +15,7 @@ import java.awt.Font;
  * 
  * Java Font. (n.d.). Code Ease. https://www.codeease.net/programming/java/java-font
  *  
- * Version/date: Version 1, 5/10/2024
+ * Version/date: Version 1, 5/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -40,6 +40,7 @@ public class JeopardyStyle implements StyleOutline
 	private Color styleColors[];
 	private Font styleFonts[];
 	
+	// Constructor for JeopardyStyle with listed parameters
 	public JeopardyStyle(Color backgroundColor, Color buttonColor, Color finishedButtonColor, Color hintButtonColor, Font slideFont, Font headerFont, Font buttonFont, Font hintButtonFont, Font categoryFont)
 	{
 		this.backgroundColor = backgroundColor;
@@ -57,6 +58,7 @@ public class JeopardyStyle implements StyleOutline
 		setStyleFonts();
 	}
 	
+	// Alternative constructor for JeopardyStyle that uses arrays instead
 	public JeopardyStyle(Color colorArray[], Font fontArray[])
 	{
 		this.backgroundColor = colorArray[0];
@@ -74,6 +76,7 @@ public class JeopardyStyle implements StyleOutline
 		setStyleFonts();
 	}
 	
+	// Sets the colors of the styleColors array
 	public void setStyleColors()
 	{
 		this.styleColors = new Color[4];
@@ -83,6 +86,7 @@ public class JeopardyStyle implements StyleOutline
 		styleColors[3] = this.hintButtonColor;
 	}
 	
+	// Sets the fonts of the styleFonts array
 	public void setStyleFonts()
 	{
 		this.styleFonts = new Font[5];

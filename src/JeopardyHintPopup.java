@@ -22,7 +22,9 @@ import javax.swing.*;
 /**
  * Functions as a hint popup
  */
-public class JeopardyHintPopup extends JFrame implements StyleMethods
+
+// JeopardyHintPopup is-a JeopardyPopup, JFrame
+public class JeopardyHintPopup extends JeopardyPopup implements StyleMethods
 {
 	private final int POPUP_HEIGHT = 300;
 	private final int POPUP_WIDTH  = 100;

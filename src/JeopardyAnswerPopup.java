@@ -23,6 +23,8 @@ import javax.swing.*;
 /**
  * Functions as an answer popup
  */
+
+//JeopardyAnswerPopup is-a JeopardyPopup
 public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 {
 	private final int POPUP_HEIGHT = 300;

@@ -16,6 +16,7 @@ import java.awt.Font;
  * 
  * Responsibilities of class:
  * GUI file
+ * Used in GUI files, particularly JeopardyGame, JeopardySlide, related files.
  */
 
 public interface StyleMethods

@@ -19,6 +19,7 @@ import java.awt.Font;
  * 
  * Responsibilities of class:
  * GUI file
+ * Used in JeopardyStyle
  */
 /**
  */

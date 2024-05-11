@@ -21,7 +21,7 @@ import java.util.Arrays;
  * References:
  * Hashtable toString() method in Java. (2023, February 20). GeeksforGeeks. https://www.geeksforgeeks.org/hashtable-tostring-method-in-java/
  *  
- * Version/date: Version 1, 5/10/2024
+ * Version/date: Version 1, 5/11/2024
  * 
  * Responsibilities of class:
  * Testing file
@@ -36,7 +36,7 @@ class ZJeopardyTest
 		Font fontEx2 = new Font("Times New Roman", Font.PLAIN, 30);
 
 		Color testColors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.BLACK};
-		Font testFonts[] = {fontEx1, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2};
+		Font testFonts[] = {fontEx1, fontEx1, fontEx1, fontEx2, fontEx2};
 		
 		// Parameter list constructor
 		JeopardyStyle styleExample1 = new JeopardyStyle(Color.RED, Color.YELLOW, Color.PINK, Color.BLACK, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2);

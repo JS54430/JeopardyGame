@@ -20,6 +20,8 @@ import javax.swing.*;
 /**
  * Abstract popup class
  */
+
+//JeopardyPopup is-a JFrame
 public abstract class JeopardyPopup extends JFrame implements StyleMethods
 {
 	private final int POPUP_HEIGHT = 300;
