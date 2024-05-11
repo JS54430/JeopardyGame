@@ -29,10 +29,11 @@ public class JeopardyGame extends JFrame implements StyleMethods
 {
 	private final int WINDOW_HEIGHT = 500;
 	private final int WINDOW_WIDTH = 500;
-	private JButton creditsButton;
+	private JLabel credits;
 	private JPanel categoryPanel;
 	private JPanel pointQuestionPanel;
 	private JPanel pointButtonRow;
+	private JLabel playerPoints;
 	private JPanel gamePanel;
 	private JeopardyButton[][] jeopardyGrid;
 	private JeopardyModel jeopardyModel;
@@ -132,8 +133,15 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		this.add(gamePanel, BorderLayout.CENTER);
 		this.repaint();
 		
+		// Setting size updates the GUI for some reason
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT+1);
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		
+//		System.out.println(jeopardyModel.checkGameOver()); // Debug
+		if(jeopardyModel.checkGameOver())
+		{
+			// Code to load if game over (all questions ran through)
+		}
 	}
 	
 	public static void main (String args[])
@@ -167,7 +175,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 	public void setFonts()
 	{
 		Font[] fonts = this.jeopardyStyle.getStyleFonts();
-		//System.out.println(Arrays.toString(fonts));
+//		 System.out.println(Arrays.toString(fonts)); // Debug
 		// Set fonts for each panel and item
 	}
 }

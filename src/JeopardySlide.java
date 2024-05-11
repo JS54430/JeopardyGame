@@ -14,7 +14,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/1/2024
+ * Version/date: Version 1, 5/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -32,12 +32,13 @@ public class JeopardySlide extends JPanel implements StyleMethods
 	private JTextField submissionField;
 	private JeopardyButton hintButton;
 	private JeopardyGame jeopardyGame;
+	private JeopardyModel jeopardyModel;
+	private int points;
 
 	// If hint button is pressed, cue JeopardyAnswerPopup to appear
 	
-	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionContent, JeopardyGame jeopardyGame)
+	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionContent, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
 	{
-		// TODO
 		// GUI stuff
 		this.slideStyle = style;
 		this.questionContent = questionContent;
@@ -50,7 +51,9 @@ public class JeopardySlide extends JPanel implements StyleMethods
 		this.submissionField = new JTextField();
 		this.submissionButton = new JeopardyButton(slideStyle, "Submit Answer");
 		this.jeopardyGame = jeopardyGame;
-		submissionButton.addActionListener(new SlideButtonListener(slideStyle, submissionButton, "Answer", this.questionContent, submissionField, this.jeopardyGame));
+		this.jeopardyModel = jeopardyModel;
+		this.points = points;
+		submissionButton.addActionListener(new SlideButtonListener(slideStyle, submissionButton, "Answer", this.questionContent, submissionField, this.jeopardyGame, this.jeopardyModel, this.points));
 		
 		// Bottom
 		this.hintButton = new JeopardyButton(slideStyle, "Hint");

@@ -16,7 +16,7 @@ import java.util.*;
  * 
  * Admin. "How to Change the Background Color of a JButton." StackHowTo, 10 Oct. 2021, stackhowto.com/how-to-change-the-background-color-of-a-jbutton/.
  *  
- * Version/date: Version 1, 5/10/2024
+ * Version/date: Version 1, 5/11/2024
  * 
  * Responsibilities of class:
  * 
@@ -24,6 +24,7 @@ import java.util.*;
 /**
  */
 
+// JeopardyButtonListener is ActionListener
 public class JeopardyButtonListener implements ActionListener
 {
 	private JeopardyModel jeopardyModel;
@@ -34,6 +35,7 @@ public class JeopardyButtonListener implements ActionListener
 	private int buttonRow;
 	private int buttonColumn;
 	private ArrayList<String> questionContent;
+	private int points;
 	
 	/**
 	 * @param jeopardyModel
@@ -56,6 +58,8 @@ public class JeopardyButtonListener implements ActionListener
 		
 		// Uses button coordinates to access to question content
 		this.questionContent = questionsAndAnswers.getQuestionContent(buttonRow, buttonColumn);
+		
+		this.points = (int) jeopardyModel.getGrid()[jeopardyButton.getRow()][jeopardyButton.getColumn()];
 	}
 	
 	// When (usable) button is clicked
@@ -64,7 +68,10 @@ public class JeopardyButtonListener implements ActionListener
 		// Update button to not be clickable
 		jeopardyButton.setEnabled(false);
 		jeopardyButton.setBackground(jeopardyStyle.getStyleColors()[2]); // finished style color
+		jeopardyModel.setButtonChecked(buttonRow, buttonColumn);
+		
+//		System.out.println(Arrays.deepToString(jeopardyModel.getCheckedGrid())); // Debug
 				
-		jeopardyGame.loadSlide(new JeopardySlide(jeopardyStyle, questionContent, jeopardyGame));
+		jeopardyGame.loadSlide(new JeopardySlide(jeopardyStyle, questionContent, jeopardyGame, jeopardyModel, points));
 	}
 }

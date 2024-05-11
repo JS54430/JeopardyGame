@@ -14,7 +14,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/10/2024
+ * Version/date: Version 1, 5/11/2024
  * 
  * Responsibilities of class:
  * 
@@ -22,6 +22,7 @@ import java.util.*;
 /**
  */
 
+// SlideButtonListener is ActionListener
 public class SlideButtonListener implements ActionListener
 {
 	private JeopardyStyle jeopardyStyle;
@@ -32,6 +33,8 @@ public class SlideButtonListener implements ActionListener
 	private String playerAnswer;
 	private String trueAnswer;
 	private JeopardyGame jeopardyGame;
+	private JeopardyModel jeopardyModel;
+	private int points;
 	
 	// Hint listener
 	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent)
@@ -43,7 +46,7 @@ public class SlideButtonListener implements ActionListener
 	}
 	
 	// Answer listener
-	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent, JTextField submissionField, JeopardyGame jeopardyGame)
+	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent, JTextField submissionField, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
 	{
 		this.jeopardyStyle = jeopardyStyle;
 		this.jeopardyButton = jeopardyButton;
@@ -51,6 +54,8 @@ public class SlideButtonListener implements ActionListener
 		this.questionContent = questionContent;
 		this.submissionField = submissionField;
 		this.jeopardyGame = jeopardyGame;
+		this.jeopardyModel = jeopardyModel;
+		this.points = points;
 	}
 	
 	// Determines if the answer is correct or incorrect
@@ -84,6 +89,10 @@ public class SlideButtonListener implements ActionListener
 			// Answer behavior
 			// Use answer constructor
 			new JeopardyAnswerPopup(jeopardyStyle, determineAnswer(), trueAnswer);
+			if(determineAnswer())
+			{
+				jeopardyModel.updatePoints(1, this.points); // Change player as needed if multiplayer
+			}
 			jeopardyGame.loadRegularScreen();
 		}
 	}
