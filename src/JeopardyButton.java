@@ -12,7 +12,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/1/2024
+ * Version/date: Version 1, 5/10/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -24,7 +24,7 @@ import javax.swing.*;
  //
 
 
-public class JeopardyButton extends JButton
+public class JeopardyButton extends JButton implements StyleMethods
 {
 	// TODO
 	// Add more to constructor parameters and constructor as needed
@@ -44,6 +44,10 @@ public class JeopardyButton extends JButton
 		this.buttonStyle = style;
 		this.text = text;
 		this.setText(text);
+		//this.setBackground(Color.red);
+				
+		setColors();
+		setFonts();
 	}
 	
 	// Constructor for slide
@@ -52,13 +56,16 @@ public class JeopardyButton extends JButton
 		this.buttonStyle = style;
 		this.text = text;
 		this.setText(text);
+		
+		setColors();
+		setFonts();
 	}
 	
 	// Disable button and change color to finished when clicked
-	public void setButtonColor(Color buttonColor) 
-	{
-		this.buttonColor = buttonColor;
-	}
+//	public void setButtonColor(Color buttonColor) 
+//	{
+//		this.buttonColor = buttonColor;
+//	}
 	
 	// returns row
 	public int getRow()
@@ -70,5 +77,20 @@ public class JeopardyButton extends JButton
 	public int getColumn()
 	{
 		return buttonColumn;
+	}
+
+	@Override
+	public void setColors()
+	{
+		Color[] colors = this.buttonStyle.getStyleColors();
+		this.buttonColor = colors[1];
+		this.setBackground(this.buttonColor);
+	}
+
+	@Override
+	public void setFonts()
+	{
+		Font[] fonts = this.buttonStyle.getStyleFonts();
+		this.setFont(fonts[2]);
 	}
 }

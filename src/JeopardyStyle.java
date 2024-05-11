@@ -15,7 +15,7 @@ import java.awt.Font;
  * 
  * Java Font. (n.d.). Code Ease. https://www.codeease.net/programming/java/java-font
  *  
- * Version/date: Version 1, 4/11/2024
+ * Version/date: Version 1, 5/10/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -23,17 +23,14 @@ import java.awt.Font;
 
 /**
  */
-public class JeopardyStyle extends StyleOutline
+public class JeopardyStyle implements StyleOutline
 {
-	// TODO
-	
 	private Color backgroundColor;
 	private Color buttonColor;
 	private Color finishedButtonColor;
 	private Color hintButtonColor;
 	
 	private Font slideFont;
-	private Font finishedSlideFont; // When slide is clicked
 	
 	private Font headerFont;
 	private Font buttonFont;
@@ -43,14 +40,38 @@ public class JeopardyStyle extends StyleOutline
 	private Color styleColors[];
 	private Font styleFonts[];
 	
-	public JeopardyStyle(Color backgroundColor, Color buttonColor, Color finishedButtonColor, Color hintButtonColor, Font slideFont, Font finishedSlideFont, Font headerFont, Font buttonFont, Font hintButtonFont, Font categoryFont)
+	public JeopardyStyle(Color backgroundColor, Color buttonColor, Color finishedButtonColor, Color hintButtonColor, Font slideFont, Font headerFont, Font buttonFont, Font hintButtonFont, Font categoryFont)
 	{
-		super(backgroundColor, buttonColor, finishedButtonColor, hintButtonColor, slideFont, finishedSlideFont, headerFont, buttonFont, hintButtonFont, categoryFont);
+		this.backgroundColor = backgroundColor;
+		this.buttonColor = buttonColor;
+		this.finishedButtonColor = finishedButtonColor;
+		this.hintButtonColor = hintButtonColor;
+		
+		this.slideFont = slideFont;
+		this.headerFont = headerFont;
+		this.buttonFont = buttonFont;
+		this.hintButtonFont = hintButtonFont;
+		this.categoryFont = categoryFont;
+		
+		setStyleColors();
+		setStyleFonts();
 	}
 	
 	public JeopardyStyle(Color colorArray[], Font fontArray[])
 	{
-		super(colorArray[0],colorArray[1],colorArray[2],colorArray[3],fontArray[0],fontArray[1],fontArray[2],fontArray[3],fontArray[4],fontArray[5]);
+		this.backgroundColor = colorArray[0];
+		this.buttonColor = colorArray[1];
+		this.finishedButtonColor = colorArray[2];
+		this.hintButtonColor = colorArray[3];
+		
+		this.slideFont = fontArray[0];
+		this.headerFont = fontArray[1];
+		this.buttonFont = fontArray[2];
+		this.hintButtonFont = fontArray[3];
+		this.categoryFont = fontArray[4];
+		
+		setStyleColors();
+		setStyleFonts();
 	}
 	
 	public void setStyleColors()
@@ -64,14 +85,12 @@ public class JeopardyStyle extends StyleOutline
 	
 	public void setStyleFonts()
 	{
-		this.styleFonts = new Font[6];
+		this.styleFonts = new Font[5];
 		styleFonts[0] = this.slideFont;
-		styleFonts[1] = this.finishedSlideFont;
-		styleFonts[2] = this.headerFont;;
-		styleFonts[3] = this.buttonFont;
-		styleFonts[4] = this.hintButtonFont;
-		styleFonts[5] = this.categoryFont;
-
+		styleFonts[1] = this.headerFont;
+		styleFonts[2] = this.buttonFont;
+		styleFonts[3] = this.hintButtonFont;
+		styleFonts[4] = this.categoryFont;
 	}
 	
 	// ACCESSING COLORS in order: backgroundColor, buttonColor, finishedButtonColor, hintButtonColor

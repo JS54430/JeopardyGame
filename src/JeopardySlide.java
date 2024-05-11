@@ -23,7 +23,7 @@ import java.util.*;
  */
 /**
  */
-public class JeopardySlide extends JPanel
+public class JeopardySlide extends JPanel implements StyleMethods
 {
 	private ArrayList<String> questionContent; // element from JeopardyQAndA
 	private JeopardyStyle slideStyle;
@@ -56,6 +56,9 @@ public class JeopardySlide extends JPanel
 		this.hintButton = new JeopardyButton(slideStyle, "Hint");
 		hintButton.addActionListener(new SlideButtonListener(slideStyle, hintButton, "Hint", this.questionContent));
 		
+		setColors();
+		setFonts();
+		
 		JPanel top = new JPanel();
 		JPanel center = new JPanel(new GridLayout());
 		JPanel bottom = new JPanel();
@@ -70,5 +73,26 @@ public class JeopardySlide extends JPanel
 		this.add(bottom, BorderLayout.SOUTH);
 
 		this.setVisible(true);
+	}
+
+	@Override
+	public void setColors()
+	{
+		// TODO Auto-generated method stub
+		Color[] colors = this.slideStyle.getStyleColors();
+		this.setBackground(colors[0]);
+		this.submissionButton.setBackground(colors[1]);
+		this.hintButton.setBackground(colors[3]);		
+	}
+
+	@Override
+	public void setFonts()
+	{
+		// TODO Auto-generated method stub
+		Font[] fonts = this.slideStyle.getStyleFonts();
+		this.directions.setFont(fonts[0]);
+		this.submissionButton.setFont(fonts[2]);
+		this.hintButton.setFont(fonts[3]);
+
 	}
 }

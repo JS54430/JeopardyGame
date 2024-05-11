@@ -13,8 +13,10 @@ import java.util.*;
  * <<add additional contributors (mentors, tutors, friends) here, with contact information>>
  * 
  * References:
+ * 
+ * Admin. "How to Change the Background Color of a JButton." StackHowTo, 10 Oct. 2021, stackhowto.com/how-to-change-the-background-color-of-a-jbutton/.
  *  
- * Version/date: Version 1, 5/1/2024
+ * Version/date: Version 1, 5/10/2024
  * 
  * Responsibilities of class:
  * 
@@ -61,6 +63,7 @@ public class JeopardyButtonListener implements ActionListener
 	{
 		// Update button to not be clickable
 		jeopardyButton.setEnabled(false);
+		jeopardyButton.setBackground(jeopardyStyle.getStyleColors()[2]); // finished style color
 				
 		jeopardyGame.loadSlide(new JeopardySlide(jeopardyStyle, questionContent, jeopardyGame));
 	}

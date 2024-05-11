@@ -14,7 +14,7 @@ import javax.swing.*;
  * 
  * "Closing on a Single Window Closes All the Frames in Java." Stack Overflow, stackoverflow.com/questions/9906222/closing-on-a-single-window-closes-all-the-frames-in-java.
  *  
- * Version/date: Version 1, 5/5/2024
+ * Version/date: Version 1, 5/10/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -23,7 +23,7 @@ import javax.swing.*;
 /**
  * Functions as an answer popup and hint popup
  */
-public class JeopardyAnswerPopup extends JFrame
+public class JeopardyAnswerPopup extends JFrame implements StyleMethods
 {
 	// TODO
 	private final int POPUP_HEIGHT = 300;
@@ -55,8 +55,11 @@ public class JeopardyAnswerPopup extends JFrame
 		}
 		else
 		{
-			textToPopup.setText("Wrong answer. Correct answer:"+answer);
+			textToPopup.setText("Wrong answer. Correct answer: "+answer);
 		}
+		
+		setColors();
+		setFonts();
 		
 		answerPopup.add(textToPopup);
 		this.add(answerPopup);
@@ -81,9 +84,26 @@ public class JeopardyAnswerPopup extends JFrame
 		this.answerPopup = new JPanel();
 		this.textToPopup = new JLabel(hint);
 		
+		setColors();
+		setFonts();
+		
 		answerPopup.add(textToPopup);
 		this.add(answerPopup);
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setVisible(true);
+	}
+
+	@Override
+	public void setColors()
+	{
+		Color[] colors = this.style.getStyleColors();
+		// If we use this method, implement more here
+	}
+
+	@Override
+	public void setFonts()
+	{
+		Font[] fonts = this.style.getStyleFonts();
+		textToPopup.setFont(fonts[1]);
 	}
 }

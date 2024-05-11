@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
+
 import javax.swing.*;
 
 /**
@@ -23,7 +25,7 @@ import javax.swing.*;
  */
 
 // JeopardyGame is-a JFrame
-public class JeopardyGame extends JFrame
+public class JeopardyGame extends JFrame implements StyleMethods
 {
 	private final int WINDOW_HEIGHT = 500;
 	private final int WINDOW_WIDTH = 500;
@@ -96,6 +98,8 @@ public class JeopardyGame extends JFrame
 		gamePanel.add(categoryPanel, BorderLayout.NORTH);
 		gamePanel.add(pointQuestionPanel, BorderLayout.CENTER);
 		
+		setColors();
+		setFonts();
 		
 		this.add(gamePanel);
 		
@@ -138,13 +142,32 @@ public class JeopardyGame extends JFrame
 		Font fontEx1 = new Font("Arial", Font.PLAIN, 20);
 		Font fontEx2 = new Font("Times New Roman", Font.PLAIN, 30);
 		Color testColors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.BLACK};
-		Font testFonts[] = {fontEx1, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2};
+		Font testFonts[] = {fontEx1, fontEx1, fontEx1, fontEx2, fontEx2};
 		JeopardyStyle styleExample2 = new JeopardyStyle(testColors, testFonts);
+		
+		JeopardyStyle styleExample1 = new JeopardyStyle(Color.RED, Color.YELLOW, Color.PINK, Color.BLACK, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2);
 					
 		JeopardyQAndA exampleQAndA = new JeopardyQAndA("exampleQAndA.csv");
 		
 		JeopardyModel exampleModel = new JeopardyModel(exampleQAndA);
 		
-		JeopardyGame exampleGame = new JeopardyGame(styleExample2, exampleModel, exampleQAndA);
+		JeopardyGame exampleGame = new JeopardyGame(styleExample1, exampleModel, exampleQAndA);
+	}
+
+	@Override
+	public void setColors()
+	{
+		Color[] colors = this.jeopardyStyle.getStyleColors();
+		this.setBackground(colors[0]);
+		this.gamePanel.setBackground(colors[0]);
+		// Add to as necessary
+	}
+
+	@Override
+	public void setFonts()
+	{
+		Font[] fonts = this.jeopardyStyle.getStyleFonts();
+		//System.out.println(Arrays.toString(fonts));
+		// Set fonts for each panel and item
 	}
 }

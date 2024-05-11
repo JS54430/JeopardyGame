@@ -14,7 +14,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/4/2024
+ * Version/date: Version 1, 5/10/2024
  * 
  * Responsibilities of class:
  * 
@@ -28,6 +28,7 @@ public class SlideButtonListener implements ActionListener
 	private JeopardyButton jeopardyButton;
 	private String buttonBehavior;
 	private ArrayList<String> questionContent;
+	private JTextField submissionField;
 	private String playerAnswer;
 	private String trueAnswer;
 	private JeopardyGame jeopardyGame;
@@ -48,7 +49,7 @@ public class SlideButtonListener implements ActionListener
 		this.jeopardyButton = jeopardyButton;
 		this.buttonBehavior = buttonBehavior;
 		this.questionContent = questionContent;
-		this.playerAnswer = submissionField.getText();
+		this.submissionField = submissionField;
 		this.jeopardyGame = jeopardyGame;
 	}
 	
@@ -56,7 +57,13 @@ public class SlideButtonListener implements ActionListener
 	public boolean determineAnswer()
 	{
 		this.trueAnswer = questionContent.get(1);
-		return trueAnswer == playerAnswer;
+		this.playerAnswer = submissionField.getText();
+		
+//		Debug
+//		System.out.println(trueAnswer);
+//		System.out.println(playerAnswer);
+		
+		return trueAnswer.equals(playerAnswer); // String uses equals because it is an object
 	}
 	
 	
