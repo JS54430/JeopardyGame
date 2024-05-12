@@ -16,7 +16,9 @@ import javax.swing.*;
  * References:
  * How to remove all components from a JFrame in Java? (n.d.). Stack Overflow. https://stackoverflow.com/questions/9347076/how-to-remove-all-components-from-a-jframe-in-java
  *  
- * Version/date: Version 1, 5/4/2024
+ * "How to Center JLabel in Jframe Swing?" Stack Overflow, stackoverflow.com/questions/19506769/how-to-center-jlabel-in-jframe-swing.
+ *  
+ * Version/date: Version 1, 5/11/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -27,13 +29,14 @@ import javax.swing.*;
 // JeopardyGame is-a JFrame
 public class JeopardyGame extends JFrame implements StyleMethods
 {
-	private final int WINDOW_HEIGHT = 500;
+	private final int WINDOW_HEIGHT = 300;
 	private final int WINDOW_WIDTH = 500;
 	private JLabel credits;
+	private JLabel playerPoints;
 	private JPanel categoryPanel;
 	private JPanel pointQuestionPanel;
 	private JPanel pointButtonRow;
-	private JLabel playerPoints;
+	private JPanel bottomPanel;
 	private JPanel gamePanel;
 	private JeopardyButton[][] jeopardyGrid;
 	private JeopardyModel jeopardyModel;
@@ -61,14 +64,19 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		
 		// JPanel declarations
-		categoryPanel = new JPanel(new GridLayout());
-		pointQuestionPanel = new JPanel();
-		pointButtonRow = new JPanel(new GridLayout());
-		gamePanel = new JPanel(new BorderLayout());
+		this.categoryPanel = new JPanel(new FlowLayout());
+		this.pointQuestionPanel = new JPanel();
+		this.pointButtonRow = new JPanel(new GridLayout());
+		this.bottomPanel = new JPanel(new BorderLayout());
+		this.gamePanel = new JPanel(new BorderLayout());
 		
+		this.playerPoints = new JLabel("Player 1: " + 0, SwingConstants.CENTER);
+		this.credits = new JLabel("Created by Jake Salzer and Hernany Torres.", SwingConstants.CENTER);
+		bottomPanel.add(playerPoints, BorderLayout.CENTER);
+		bottomPanel.add(credits, BorderLayout.SOUTH);
 		
 		Object[][] grid = jeopardyModel.getGrid();
-		jeopardyGrid = new JeopardyButton[grid.length][grid[0].length]; // null array
+		this.jeopardyGrid = new JeopardyButton[grid.length][grid[0].length]; // null array
 		
 		for (int j = 0; j<grid.length; j++)
 		{
@@ -98,6 +106,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		
 		gamePanel.add(categoryPanel, BorderLayout.NORTH);
 		gamePanel.add(pointQuestionPanel, BorderLayout.CENTER);
+		gamePanel.add(bottomPanel, BorderLayout.SOUTH);
 		
 		setColors();
 		setFonts();
@@ -136,6 +145,8 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		// Setting size updates the GUI for some reason
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT+1);
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		
+		playerPoints.setText("Player 1: "+jeopardyModel.getPoints()[0]);
 		
 //		System.out.println(jeopardyModel.checkGameOver()); // Debug
 		if(jeopardyModel.checkGameOver())
