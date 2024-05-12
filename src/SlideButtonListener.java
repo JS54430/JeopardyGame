@@ -61,14 +61,14 @@ public class SlideButtonListener implements ActionListener
 	// Determines if the answer is correct or incorrect
 	public boolean determineAnswer()
 	{
-		this.trueAnswer = questionContent.get(1);
-		this.playerAnswer = submissionField.getText();
+		this.trueAnswer = questionContent.get(1).toLowerCase();
+		this.playerAnswer = submissionField.getText().toLowerCase();
 		
 //		Debug
 //		System.out.println(trueAnswer);
 //		System.out.println(playerAnswer);
 		
-		return trueAnswer.equals(playerAnswer); // String uses equals because it is an object
+		return trueAnswer.equals(playerAnswer) || playerAnswer.contains(trueAnswer); // String uses equals because it is an object, lowercase used as to not place importance on capitalization; contains used in case the answer is "close enough"
 	}
 	
 	
