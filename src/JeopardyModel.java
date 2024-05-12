@@ -71,19 +71,25 @@ public class JeopardyModel
 	// Returns the normal grid
 	public Object[][] getGrid()
 	{
-		return this.grid;
+		return grid;
 	}
 	
 	// Returns the checkedGrid
 	public boolean[][] getCheckedGrid()
 	{
-		return this.checkedGrid;
+		return checkedGrid;
 	}
 	
 	// Sets checkedGrid button row and column to true
 	public void setButtonChecked(int row, int column)
 	{
 		this.checkedGrid[row][column] = true;
+	}
+	
+	// Returns the score board of the players
+	public int[] getPoints()
+	{
+		return playerScores;
 	}
 	
 	// Updates a player's points
