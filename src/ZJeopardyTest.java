@@ -60,7 +60,12 @@ class ZJeopardyTest
 	{
 		JeopardyModel exampleModel = new JeopardyModel(new JeopardyQAndA("exampleQAndA.csv"));
 		Object[][] grid = exampleModel.getGrid();
+		boolean[][] checkedGrid = exampleModel.getCheckedGrid();
+		int[] points = exampleModel.getPoints();
+		
 		assertEquals(Arrays.deepToString(grid), "[[Category1, Category2, Category3, Category4, Category5, Category6], [100, 100, 100, 100, 100, 100], [200, 200, 200, 200, 200, 200], [300, 300, 300, 300, 300, 300], [400, 400, 400, 400, 400, 400], [500, 500, 500, 500, 500, 500]]");
+		assertEquals(Arrays.deepToString(checkedGrid),"[[true, true, true, true, true, true], [false, false, false, false, false, false], [false, false, false, false, false, false], [false, false, false, false, false, false], [false, false, false, false, false, false], [false, false, false, false, false, false]]");
+		assertEquals(points[0], 0);
 	}
 	
 //	@Test
@@ -89,15 +94,15 @@ class ZJeopardyTest
 	{
 		JeopardyQAndA myExampleAnswersQuestions1 = new JeopardyQAndA("exampleQAndA.csv");
 	
-		/*
-		String consoleQAndA1 = myExampleAnswersQuestions1.getQAndA().toString();
 		
-		System.out.println(consoleQAndA1);
+//		String consoleQAndA1 = myExampleAnswersQuestions1.getQAndA().toString();
+//		
+//		System.out.println(consoleQAndA1);
+//		
+//		System.out.println(myExampleAnswersQuestions1.getCategoryQuestionsAndAnswers(1));
+//		
+//		System.out.println(myExampleAnswersQuestions1.getQuestionContent(0,0));
 		
-		System.out.println(myExampleAnswersQuestions1.getCategoryQuestionsAndAnswers(1));
-		
-		System.out.println(myExampleAnswersQuestions1.getQuestionContent(0,0));
-		*/
 		
 		assertEquals(myExampleAnswersQuestions1.getQuestionContent(0,0).toString(), "[1Q1, 1A1, 1H1]");
 	}
