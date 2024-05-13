@@ -13,6 +13,8 @@ import javax.swing.*;
  * References:
  * 
  * "Closing on a Single Window Closes All the Frames in Java." Stack Overflow, stackoverflow.com/questions/9906222/closing-on-a-single-window-closes-all-the-frames-in-java.
+ * 
+ * "How to Center the Text in a JLabel?" Stack Overflow, stackoverflow.com/questions/6810581/how-to-center-the-text-in-a-jlabel.
  *  
  * Version/date: Version 1, 5/13/2024
  * 
