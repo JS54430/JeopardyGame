@@ -20,26 +20,24 @@ import javax.swing.*;
  * 
  * Responsibilities of class:
  * GUI file
- *
- */
-/**
  * Functions as an answer popup
  */
-
+/**
+ */
 //JeopardyAnswerPopup is-a JeopardyPopup
 public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 {
-	private final int POPUP_HEIGHT = 100;
-	private final int POPUP_WIDTH  = 350;
+	private final int POPUP_WIDTH  = 350; // JeopardyAnswerPopup has-a popup width
+	private final int POPUP_HEIGHT = 100; // JeopardyAnswerPopup has-a popup height
 	//private final int DURATION = 5; // seconds for popup to exist before closing
 	
-	private JeopardyStyle style;
-	private JPanel answerPopup; 
-	private JLabel textToPopup;
-	private JLabel trueAnswer;
-	private boolean correctAnswer;
+	private JeopardyStyle style; // JeopardyAnswerPopup has-a style
+	private JPanel answerPopup; // JeopardyAnswerPopup has-an answerPopup
+	private JLabel textToPopup; // JeopardyAnswerPopup has-an textToPopup
+	private JLabel trueAnswer; // JeopardyAnswerPopup has-a trueAnswer (text)
+	private boolean correctAnswer; // JeopardyAnswerPopup has-a correctAnswer (boolean)
 
-	
+	// Constructor for JeopardyAnswerPopup
 	public JeopardyAnswerPopup(JeopardyStyle style, boolean correctAnswer, String answer)
 	{
 
@@ -54,11 +52,13 @@ public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 		
 		this.answerPopup = new JPanel(new BorderLayout());
 		
+		// If answer is correct, display correct answer message
 		if (correctAnswer)
 		{
 			this.textToPopup = new JLabel("Correct answer!", SwingConstants.CENTER);
 			answerPopup.add(textToPopup);
 		}
+		// Else, display wrong answer message, along with the correct answer.
 		else
 		{
 			this.textToPopup = new JLabel("Wrong answer. Correct answer: ", SwingConstants.CENTER);

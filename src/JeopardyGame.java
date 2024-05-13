@@ -18,7 +18,7 @@ import javax.swing.*;
  *  
  * "How to Center JLabel in Jframe Swing?" Stack Overflow, stackoverflow.com/questions/19506769/how-to-center-jlabel-in-jframe-swing.
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -29,23 +29,21 @@ import javax.swing.*;
 // JeopardyGame is-a JFrame
 public class JeopardyGame extends JFrame implements StyleMethods
 {
-	private final int WINDOW_HEIGHT = 300;
-	private final int WINDOW_WIDTH = 500;
-	private JLabel credits;
-	private JLabel playerPoints;
-	private JPanel categoryPanel;
-	private JPanel pointQuestionPanel;
-	private JPanel pointButtonRow;
-	private JPanel bottomPanel;
-	private JPanel gamePanel;
-	private JeopardyButton[][] jeopardyGrid;
-	private JeopardyModel jeopardyModel;
-	private JeopardyStyle jeopardyStyle;
-	private JeopardyQAndA questionsAndAnswers;
+	private final int WINDOW_HEIGHT = 300; // JeopardyGame has-a window height
+	private final int WINDOW_WIDTH = 500; // JeopardyGame has-a window width
+	private JLabel credits; // JeopardyGame has-a credits label
+	private JLabel playerPoints; // JeopardyGame has-a player points label
+	private JPanel categoryPanel; // JeopardyGame has-a category panel
+	private JPanel pointQuestionPanel; // JeopardyGame has-a point questions panel
+	private JPanel pointButtonRow; // JeopardyGame has-a point button row
+	private JPanel bottomPanel; // JeopardyGame has-a bottom panel
+	private JPanel gamePanel; // JeopardyGame has-a game panel
+	private JeopardyButton[][] jeopardyGrid; // JeopardyGame has-a jeopardy grid
+	private JeopardyModel jeopardyModel; // JeopardyGame has-a jeopardy model
+	private JeopardyStyle jeopardyStyle; // JeopardyGame has-a jeopardy style
+	private JeopardyQAndA questionsAndAnswers; // JeopardyGame has-a questions and answers
+	private JPanel currentPanel; // JeopardyGame has-a current panel
 	
-	private JPanel currentPanel;
-	
-	// TODO
 	public JeopardyGame(JeopardyStyle style, JeopardyModel model, JeopardyQAndA questionsAndAnswers)
 	{
 		// TODO Use style attributes
@@ -70,18 +68,26 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		this.bottomPanel = new JPanel(new BorderLayout());
 		this.gamePanel = new JPanel(new BorderLayout());
 		
+		// Multi-Player declaration
 		this.playerPoints = new JLabel("Player 1: " + 0, SwingConstants.CENTER);
+
+		// Author Panel
 		this.credits = new JLabel("Created by Jake Salzer and Hernany Torres.", SwingConstants.CENTER);
+		
 		bottomPanel.add(playerPoints, BorderLayout.CENTER);
 		bottomPanel.add(credits, BorderLayout.SOUTH);
 		
+		// Creating the grid of jeopardy
 		Object[][] grid = jeopardyModel.getGrid();
 		this.jeopardyGrid = new JeopardyButton[grid.length][grid[0].length]; // null array
 		
+		// For loop that creates the grid of jeopardy categories (JLabel) and buttons (JeopardyButton)
 		for (int j = 0; j<grid.length; j++)
 		{
+			// if 0th row
 			if (j == 0)
 			 {
+				// Add categories to row
 				for (int i = 0; i<grid[0].length; i++)
 				{
 					JLabel currentCategory = new JLabel( (String) grid[0][i] );
@@ -90,6 +96,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 			}
 			else
 			{
+				// Add JeopardyButtons to all other rows
 				for (int k = 0; k<grid[j].length; k++)
 				{
 					JeopardyButton button = new JeopardyButton(j, k, jeopardyStyle, grid[j][k].toString());
@@ -104,6 +111,8 @@ public class JeopardyGame extends JFrame implements StyleMethods
 			}
 		}
 		
+		
+		// Add all subpanels to gamePanel
 		gamePanel.add(categoryPanel, BorderLayout.NORTH);
 		gamePanel.add(pointQuestionPanel, BorderLayout.CENTER);
 		gamePanel.add(bottomPanel, BorderLayout.SOUTH);
@@ -119,6 +128,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 			e.printStackTrace();
 		}
 		
+		// JeopardyGame adds gamePanel (main game)
 		this.add(gamePanel);
 		
 		// Implement any other final GUI stuff here
@@ -132,6 +142,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		this.setVisible(true);
 	}
 	
+	// Loads slide with slide content
 	public void loadSlide(JeopardySlide loadedSlide)
 	{
 		this.getContentPane().remove(gamePanel);
@@ -144,6 +155,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
 	
+	// Loads regular screen
 	public void loadRegularScreen()
 	{
 		this.getContentPane().removeAll();
@@ -159,13 +171,17 @@ public class JeopardyGame extends JFrame implements StyleMethods
 //		System.out.println(jeopardyModel.checkGameOver()); // Debug
 		if(jeopardyModel.checkGameOver())
 		{
+			// TODO
 			// Code to load if game over (all questions ran through)
+			// Load popup declaring winner if multiplayer
+			// Load final scores as well in popup
+			// Load percent right out of total possible score
 		}
 	}
 	
+	// Styles for the Jeopardy Board
 	public static void main (String args[])
 	{
-		
 		Font fontEx1 = new Font("Arial", Font.PLAIN, 20);
 		Font fontEx2 = new Font("Times New Roman", Font.PLAIN, 30);
 		Color testColors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.BLACK};
@@ -173,7 +189,8 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		JeopardyStyle styleExample2 = new JeopardyStyle(testColors, testFonts);
 		
 		JeopardyStyle styleExample1 = new JeopardyStyle(Color.RED, Color.YELLOW, Color.PINK, Color.BLACK, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2);
-					
+
+		// Fill with the content for the Questions and Answers			
 		JeopardyQAndA exampleQAndA = new JeopardyQAndA("exampleQAndA.csv");
 		
 		JeopardyModel exampleModel = new JeopardyModel(exampleQAndA);

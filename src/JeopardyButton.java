@@ -12,30 +12,25 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * GUI file
+ * grid of buttons, when clicked, jeopardy slide pops up
  */
 /**
  */
-
- // grid of buttons, when clicked , jeopardy slide pops up
- //
-
 // JeopardyButton is-a JButton, uses StyleMethods
 public class JeopardyButton extends JButton implements StyleMethods
 {
 	// Add more to constructor parameters and constructor as needed
-	// Implement action listener, see fishingGame for example
-	
 	private Color buttonColor; // JeopardyButton has-a color
 	private int buttonRow; // JeopardyButton has-a int row
 	private int buttonColumn; // JeopardyButton has-a int column
 	private JeopardyStyle buttonStyle; // JeopardyButton has-a style
 	private String text; // JeopardyButton has text
 	
-	// Constructor for grid
+	// Constructor for JeopardyButton
 	public JeopardyButton(int buttonRow, int buttonColumn, JeopardyStyle style, String text)
 	{
 		this.buttonRow = buttonRow;
@@ -43,13 +38,12 @@ public class JeopardyButton extends JButton implements StyleMethods
 		this.buttonStyle = style;
 		this.text = text;
 		this.setText(text);
-		//this.setBackground(Color.red);
 				
 		setColors();
 		setFonts();
 	}
 	
-	// Constructor for slide
+	// Constructor for JeopardyButton
 	public JeopardyButton(JeopardyStyle style, String text)
 	{
 		this.buttonStyle = style;
@@ -59,12 +53,6 @@ public class JeopardyButton extends JButton implements StyleMethods
 		setColors();
 		setFonts();
 	}
-	
-	// Disable button and change color to finished when clicked
-//	public void setButtonColor(Color buttonColor) 
-//	{
-//		this.buttonColor = buttonColor;
-//	}
 	
 	// returns row
 	public int getRow()
@@ -78,6 +66,7 @@ public class JeopardyButton extends JButton implements StyleMethods
 		return buttonColumn;
 	}
 
+	// Sets colors for the buttons on the board
 	@Override
 	public void setColors()
 	{
@@ -86,6 +75,7 @@ public class JeopardyButton extends JButton implements StyleMethods
 		this.setBackground(this.buttonColor);
 	}
 
+	// Sets the font for the buttons on the board
 	@Override
 	public void setFonts()
 	{

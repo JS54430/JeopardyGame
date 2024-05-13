@@ -11,7 +11,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * Non-GUI file
@@ -19,19 +19,21 @@ import java.util.*;
  */
 /**
  */
+
 public class JeopardyModel
 {
 	// Adjust grid lengths as necessary
-	private int gridHeight;
-	private int gridWidth;
-	private Object[][] grid;
-	private boolean[][] checkedGrid; 
-	private ArrayList<String> categories;
-	private int incrementPointValue = 100;
-	private JeopardyQAndA questionsAndAnswers;
-	private int playerCount;
-	private int[] playerScores;
+	private int gridHeight; // JeopardyModel has-a grid height
+	private int gridWidth; // JeopardyModel has-a grid width
+	private Object[][] grid; // JeopardyModel has-a grid (2D array)
+	private boolean[][] checkedGrid; // JeopardyModel has-a boolean grid (2D array)
+	private ArrayList<String> categories; // JeopardyModel has-a ArrayList of strings which are categories
+	private int incrementPointValue = 100; // JeopardyModel has-a increment point value
+	private JeopardyQAndA questionsAndAnswers; // JeopardyModel has-a JeopardyQAndA
+	private int playerCount; // JeopardyModel has-a player count
+	private int[] playerScores; // JeopardyModel has-a player scores
 	
+	// Constructor for JeopardyModel
 	public JeopardyModel(JeopardyQAndA QandA)
 	{
 		this.questionsAndAnswers = QandA;

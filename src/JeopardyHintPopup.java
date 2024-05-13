@@ -13,27 +13,27 @@ import javax.swing.*;
  * 
  * "Closing on a Single Window Closes All the Frames in Java." Stack Overflow, stackoverflow.com/questions/9906222/closing-on-a-single-window-closes-all-the-frames-in-java.
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * GUI file
- *
+ * Functions as a hint popup
  */
 /**
- * Functions as a hint popup
  */
 
 // JeopardyHintPopup is-a JeopardyPopup, JFrame
 public class JeopardyHintPopup extends JeopardyPopup implements StyleMethods
 {
-	private final int POPUP_HEIGHT = 100;
-	private final int POPUP_WIDTH  = 300;
+	private final int POPUP_WIDTH  = 300; // JeopardyAnswerPopup has-a popup width
+	private final int POPUP_HEIGHT = 100; // JeopardyAnswerPopup has-a popup height
 	//private final int DURATION = 5; // seconds for popup to exist before closing
 	
-	private JeopardyStyle style;
-	private JPanel hintPopup; 
-	private JLabel textToPopup;
+	private JeopardyStyle style; // JeopardyAnswerPopup has-a style
+	private JPanel hintPopup; // JeopardyAnswerPopup has-an hintPopup
+	private JLabel textToPopup; // JeopardyAnswerPopup has-an textToPopup
 	
+	// Constructor for JeopardyHintPopup
 	public JeopardyHintPopup(JeopardyStyle style, String hint)
 	{
 		this.style = style;

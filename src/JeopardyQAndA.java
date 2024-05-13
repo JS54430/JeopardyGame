@@ -17,7 +17,7 @@ import java.io.*;
  * 
  * Hashtable put() method in Java. (2018, June 28). GeeksforGeeks. https://www.geeksforgeeks.org/hashtable-put-method-in-java/
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * Non-GUI file
@@ -25,15 +25,17 @@ import java.io.*;
  */
 /**
  */
+
 public class JeopardyQAndA
 {
 	// JeopardyQAndA has-a hashtable data structure that has a key of the row and column checked by the array being equal, 
 	// and an element of an array list containing question, answer, hint, and category in that order
 	
 	// Use IO scanner section content in order to read from a CSV for data ease
-	private Hashtable<Integer, ArrayList<Object>> questionsAndAnswers;
-	private ArrayList<String> categories;
+	private Hashtable<Integer, ArrayList<Object>> questionsAndAnswers; // JeopardyQAndA has-a hashtable with integer keys and arraylist object elements corresponding to categories, questions, answers, and hints
+	private ArrayList<String> categories; // JeopardyQAndA has-a array list of strings of categories
 	
+	// Constructor of JeopardyQAndA
 	public JeopardyQAndA(String fileName)
 	{
 		// setup scanner
@@ -108,26 +110,31 @@ public class JeopardyQAndA
 		
 	}
 	
+	// Returns questions and answers for category number
 	public ArrayList<Object> getCategoryQuestionsAndAnswers(int categoryNumber)
 	{
 		return questionsAndAnswers.get(categoryNumber);
 	}
 	
+	// returns categories
 	public ArrayList<String> getCategories()
 	{
 		return categories;
 	}
 	
+	// returns hashtable with integer keys and arraylist object elements corresponding to categories, questions, answers, and hints
 	public Hashtable<Integer, ArrayList<Object>> getQAndA()
 	{
 		return questionsAndAnswers;
 	}
-	
+
+	// returns number of questions per category
 	public int getNumberOfQuestionsPerCategory()
 	{
 		return getCategoryQuestionsAndAnswers(1).size() - 1;
 	}
 	
+	// returns the array list of question content within questionsAndAnswers
 	public ArrayList<String> getQuestionContent(int row, int column)
 	{
 		return (ArrayList<String>) questionsAndAnswers.get(row).get(column+1);

@@ -17,7 +17,7 @@ import java.util.*;
  * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
- * 
+ * Action listener of slide
  */
 /**
  */
@@ -25,31 +25,28 @@ import java.util.*;
 // SlideButtonListener is ActionListener
 public class SlideButtonListener implements ActionListener
 {
-	private JeopardyStyle jeopardyStyle;
-	private JeopardyButton jeopardyButton;
-	private String buttonBehavior;
-	private ArrayList<String> questionContent;
-	private JTextField submissionField;
-	private String playerAnswer;
-	private String trueAnswer;
-	private JeopardyGame jeopardyGame;
-	private JeopardyModel jeopardyModel;
-	private int points;
+	private JeopardyStyle jeopardyStyle; // SlideButtonListener has-a style
+	private String buttonBehavior; // SlideButtonListener has-a button behavior
+	private ArrayList<String> questionContent; // SlideButtonListener has-a question content
+	private JTextField submissionField; // SlideButtonListener has-a submission field
+	private String playerAnswer; // SlideButtonListener has-a player answer
+	private String trueAnswer; // SlideButtonListener has-a true answer
+	private JeopardyGame jeopardyGame; // SlideButtonListener has-a jeopardy game
+	private JeopardyModel jeopardyModel; // SlideButtonListener has-a jeopardy model
+	private int points; // SlideButtonListener has-a points
 	
 	// Hint listener
-	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent)
+	public SlideButtonListener(JeopardyStyle jeopardyStyle, String buttonBehavior, ArrayList<String> questionContent)
 	{
 		this.jeopardyStyle = jeopardyStyle;
-		this.jeopardyButton = jeopardyButton;
 		this.buttonBehavior = buttonBehavior;
 		this.questionContent = questionContent;
 	}
 	
 	// Answer listener
-	public SlideButtonListener(JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton, String buttonBehavior, ArrayList<String> questionContent, JTextField submissionField, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
+	public SlideButtonListener(JeopardyStyle jeopardyStyle, String buttonBehavior, ArrayList<String> questionContent, JTextField submissionField, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
 	{
 		this.jeopardyStyle = jeopardyStyle;
-		this.jeopardyButton = jeopardyButton;
 		this.buttonBehavior = buttonBehavior;
 		this.questionContent = questionContent;
 		this.submissionField = submissionField;

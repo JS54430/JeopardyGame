@@ -15,7 +15,7 @@ import java.awt.Font;
  * 
  * Java Font. (n.d.). Code Ease. https://www.codeease.net/programming/java/java-font
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -23,22 +23,25 @@ import java.awt.Font;
 
 /**
  */
+
+ // JeopardyStyle uses StyleOutline
 public class JeopardyStyle implements StyleOutline
 {
-	private Color backgroundColor;
-	private Color buttonColor;
-	private Color finishedButtonColor;
-	private Color hintButtonColor;
+	// Fonts
+	private Color backgroundColor; // JeopardyStyle has-a background color
+	private Color buttonColor; // JeopardyStyle has-a button color
+	private Color finishedButtonColor; // JeopardyStyle has-a finished button color
+	private Color hintButtonColor; // JeopardyStyle has-a hint button color
 	
-	private Font slideFont;
+	// Fonts
+	private Font slideFont; // JeopardyStyle has-a slide font
+	private Font headerFont; // JeopardyStyle has-a header font
+	private Font buttonFont; // JeopardyStyle has-a button font
+	private Font hintButtonFont; // JeopardyStyle has-a hint button font
+	private Font categoryFont; // JeopardyStyle has-a category font
 	
-	private Font headerFont;
-	private Font buttonFont;
-	private Font hintButtonFont;
-	private Font categoryFont;
-	
-	private Color styleColors[];
-	private Font styleFonts[];
+	private Color styleColors[]; // JeopardyStyle has-a color array
+	private Font styleFonts[]; // JeopardyStyle has-a font array
 	
 	// Constructor for JeopardyStyle with listed parameters
 	public JeopardyStyle(Color backgroundColor, Color buttonColor, Color finishedButtonColor, Color hintButtonColor, Font slideFont, Font headerFont, Font buttonFont, Font hintButtonFont, Font categoryFont)

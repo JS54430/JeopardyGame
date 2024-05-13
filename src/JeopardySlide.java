@@ -19,25 +19,25 @@ import java.util.*;
  * Responsibilities of class:
  * GUI file
  * Displays question when button on board is clicked
- *
  */
 /**
  */
-public class JeopardySlide extends JPanel implements StyleMethods
-{
-	private ArrayList<String> questionContent; // element from JeopardyQAndA
-	private JeopardyStyle slideStyle;
-	private JLabel directions;
-	private JLabel questionLabel;
-	private JeopardyButton submissionButton;
-	private JTextField submissionField;
-	private JeopardyButton hintButton;
-	private JeopardyGame jeopardyGame;
-	private JeopardyModel jeopardyModel;
-	private int points;
 
-	// If hint button is pressed, cue JeopardyAnswerPopup to appear
-	
+// JeopardySlide is-a JPanel, uses StyleMethods
+public class JeopardySlide extends JPanel implements StyleMethods 
+{
+	private ArrayList<String> questionContent; // JeopardySlide has-a array list string of question content (from JeopardyQAndA)
+	private JeopardyStyle slideStyle; // JeopardySlide has-a slide style
+	private JLabel directions; // JeopardySlide has-a directions label
+	private JLabel questionLabel; // JeopardySlide has-a question label
+	private JeopardyButton submissionButton; // JeopardySlide has-a submission button
+	private JTextField submissionField; // JeopardySlide has-a submission field
+	private JeopardyButton hintButton; // JeopardySlide has-a hint button
+	private JeopardyGame jeopardyGame; // JeopardySlide has-a jeopardy game
+	private JeopardyModel jeopardyModel; // JeopardySlide has-a jeopardy model
+	private int points; // JeopardySlide has-a points
+
+	// Constructor for JeopardySlide
 	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionContent, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
 	{
 		// GUI stuff
@@ -55,11 +55,11 @@ public class JeopardySlide extends JPanel implements StyleMethods
 		this.jeopardyGame = jeopardyGame;
 		this.jeopardyModel = jeopardyModel;
 		this.points = points;
-		submissionButton.addActionListener(new SlideButtonListener(slideStyle, submissionButton, "Answer", this.questionContent, submissionField, this.jeopardyGame, this.jeopardyModel, this.points));
+		submissionButton.addActionListener(new SlideButtonListener(slideStyle, "Answer", this.questionContent, submissionField, this.jeopardyGame, this.jeopardyModel, this.points));
 		
 		// Bottom
 		this.hintButton = new JeopardyButton(slideStyle, "Hint");
-		hintButton.addActionListener(new SlideButtonListener(slideStyle, hintButton, "Hint", this.questionContent));
+		hintButton.addActionListener(new SlideButtonListener(slideStyle, "Hint", this.questionContent));
 		
 		// Try and catch for setting colors and fonts in case this non-essential code bugs
 		try
