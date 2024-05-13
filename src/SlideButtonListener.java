@@ -14,7 +14,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * 
@@ -56,19 +56,20 @@ public class SlideButtonListener implements ActionListener
 		this.jeopardyGame = jeopardyGame;
 		this.jeopardyModel = jeopardyModel;
 		this.points = points;
+		this.trueAnswer = questionContent.get(1);
 	}
 	
 	// Determines if the answer is correct or incorrect
 	public boolean determineAnswer()
 	{
-		this.trueAnswer = questionContent.get(1).toLowerCase();
+		String lenientTrueAnswer = this.trueAnswer.toLowerCase();
 		this.playerAnswer = submissionField.getText().toLowerCase();
 		
 //		Debug
 //		System.out.println(trueAnswer);
 //		System.out.println(playerAnswer);
 		
-		return trueAnswer.equals(playerAnswer) || playerAnswer.contains(trueAnswer); // String uses equals because it is an object, lowercase used as to not place importance on capitalization; contains used in case the answer is "close enough"
+		return lenientTrueAnswer.equals(playerAnswer) || playerAnswer.contains(lenientTrueAnswer); // String uses equals because it is an object, lowercase used as to not place importance on capitalization; contains used in case the answer is "close enough"
 	}
 	
 	

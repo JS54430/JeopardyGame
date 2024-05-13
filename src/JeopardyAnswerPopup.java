@@ -37,12 +37,14 @@ public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 	private JPanel answerPopup; 
 	private JLabel textToPopup;
 	private JLabel trueAnswer;
+	private boolean correctAnswer;
 
 	
 	public JeopardyAnswerPopup(JeopardyStyle style, boolean correctAnswer, String answer)
 	{
 
 		this.style = style;
+		this.correctAnswer = correctAnswer;
 		this.setTitle("Popup");
 		this.setSize(POPUP_WIDTH, POPUP_HEIGHT);
 		this.setLayout(new BorderLayout());
@@ -86,6 +88,9 @@ public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 	{
 		Font[] fonts = this.style.getStyleFonts();
 		textToPopup.setFont(fonts[1]);
-		trueAnswer.setFont(fonts[1]);
+		if(!correctAnswer)
+		{
+			trueAnswer.setFont(fonts[1]);
+		}
 	}
 }

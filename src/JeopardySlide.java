@@ -14,7 +14,7 @@ import java.util.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -28,6 +28,7 @@ public class JeopardySlide extends JPanel implements StyleMethods
 	private ArrayList<String> questionContent; // element from JeopardyQAndA
 	private JeopardyStyle slideStyle;
 	private JLabel directions;
+	private JLabel questionLabel;
 	private JeopardyButton submissionButton;
 	private JTextField submissionField;
 	private JeopardyButton hintButton;
@@ -45,7 +46,8 @@ public class JeopardySlide extends JPanel implements StyleMethods
 		this.setLayout(new BorderLayout());
 		
 		// Top
-		this.directions = new JLabel("Submit the answer to the following question: "+questionContent.get(0));
+		this.directions = new JLabel("Submit the answer to the following question: ", SwingConstants.CENTER);
+		this.questionLabel = new JLabel(questionContent.get(0), SwingConstants.CENTER);
 		
 		// Center
 		this.submissionField = new JTextField();
@@ -62,11 +64,12 @@ public class JeopardySlide extends JPanel implements StyleMethods
 		setColors();
 		setFonts();
 		
-		JPanel top = new JPanel();
+		JPanel top = new JPanel(new BorderLayout());
 		JPanel center = new JPanel(new GridLayout());
 		JPanel bottom = new JPanel();
 		
-		top.add(directions);
+		top.add(directions, BorderLayout.NORTH);
+		top.add(questionLabel, BorderLayout.SOUTH);
 		center.add(submissionField);
 		center.add(submissionButton);
 		bottom.add(hintButton);
@@ -81,7 +84,6 @@ public class JeopardySlide extends JPanel implements StyleMethods
 	@Override
 	public void setColors()
 	{
-		// TODO Auto-generated method stub
 		Color[] colors = this.slideStyle.getStyleColors();
 		this.setBackground(colors[0]);
 		this.submissionButton.setBackground(colors[1]);
@@ -91,9 +93,9 @@ public class JeopardySlide extends JPanel implements StyleMethods
 	@Override
 	public void setFonts()
 	{
-		// TODO Auto-generated method stub
 		Font[] fonts = this.slideStyle.getStyleFonts();
 		this.directions.setFont(fonts[0]);
+		this.questionLabel.setFont(fonts[0]);
 		this.submissionButton.setFont(fonts[2]);
 		this.hintButton.setFont(fonts[3]);
 
