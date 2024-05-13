@@ -61,8 +61,16 @@ public class JeopardySlide extends JPanel implements StyleMethods
 		this.hintButton = new JeopardyButton(slideStyle, "Hint");
 		hintButton.addActionListener(new SlideButtonListener(slideStyle, hintButton, "Hint", this.questionContent));
 		
-		setColors();
-		setFonts();
+		// Try and catch for setting colors and fonts in case this non-essential code bugs
+		try
+		{
+			setColors();
+			setFonts();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 		JPanel top = new JPanel(new BorderLayout());
 		JPanel center = new JPanel(new GridLayout());

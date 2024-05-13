@@ -68,8 +68,16 @@ public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 			answerPopup.add(trueAnswer, BorderLayout.SOUTH);
 		}
 		
-		setColors();
-		setFonts();
+		// Try and catch for setting colors and fonts in case this non-essential code bugs
+		try
+		{
+			setColors();
+			setFonts();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 		this.add(answerPopup, BorderLayout.NORTH);
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);				

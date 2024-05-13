@@ -48,8 +48,16 @@ public class JeopardyHintPopup extends JeopardyPopup implements StyleMethods
 		this.hintPopup = new JPanel();
 		this.textToPopup = new JLabel(hint);
 		
-		setColors();
-		setFonts();
+		// Try and catch for setting colors and fonts in case this non-essential code bugs
+		try
+		{
+			setColors();
+			setFonts();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 		hintPopup.add(textToPopup);
 		this.add(hintPopup);
