@@ -14,7 +14,7 @@ import javax.swing.*;
  * 
  * "Closing on a Single Window Closes All the Frames in Java." Stack Overflow, stackoverflow.com/questions/9906222/closing-on-a-single-window-closes-all-the-frames-in-java.
  *  
- * Version/date: Version 1, 5/11/2024
+ * Version/date: Version 1, 5/13/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -27,13 +27,14 @@ import javax.swing.*;
 //JeopardyAnswerPopup is-a JeopardyPopup
 public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 {
-	private final int POPUP_HEIGHT = 300;
-	private final int POPUP_WIDTH  = 100;
+	private final int POPUP_HEIGHT = 100;
+	private final int POPUP_WIDTH  = 350;
 	//private final int DURATION = 5; // seconds for popup to exist before closing
 	
 	private JeopardyStyle style;
 	private JPanel answerPopup; 
 	private JLabel textToPopup;
+	private JLabel trueAnswer;
 
 	
 	public JeopardyAnswerPopup(JeopardyStyle style, boolean correctAnswer, String answer)
@@ -41,30 +42,33 @@ public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 
 		this.style = style;
 		this.setTitle("Popup");
-		this.setSize(POPUP_HEIGHT, POPUP_WIDTH);
+		this.setSize(POPUP_WIDTH, POPUP_HEIGHT);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.setTitle("Answer");
 		
-		this.answerPopup = new JPanel();
-		this.textToPopup = new JLabel();
+		this.answerPopup = new JPanel(new BorderLayout());
 		
 		if (correctAnswer)
 		{
-			textToPopup.setText("Correct answer!");
+			this.textToPopup = new JLabel("Correct answer!", SwingConstants.CENTER);
+			answerPopup.add(textToPopup);
 		}
 		else
 		{
-			textToPopup.setText("Wrong answer. Correct answer: "+answer);
+			this.textToPopup = new JLabel("Wrong answer. Correct answer: ", SwingConstants.CENTER);
+			this.trueAnswer = new JLabel(answer, SwingConstants.CENTER);
+			
+			answerPopup.add(textToPopup, BorderLayout.NORTH);
+			answerPopup.add(trueAnswer, BorderLayout.SOUTH);
 		}
 		
 		setColors();
 		setFonts();
 		
-		answerPopup.add(textToPopup);
-		this.add(answerPopup);
-		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.add(answerPopup, BorderLayout.NORTH);
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);				
 		this.setVisible(true);
 	}
 
@@ -80,5 +84,6 @@ public class JeopardyAnswerPopup extends JeopardyPopup implements StyleMethods
 	{
 		Font[] fonts = this.style.getStyleFonts();
 		textToPopup.setFont(fonts[1]);
+		trueAnswer.setFont(fonts[1]);
 	}
 }
