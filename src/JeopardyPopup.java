@@ -24,8 +24,8 @@ import javax.swing.*;
 //JeopardyPopup is-a JFrame
 public abstract class JeopardyPopup extends JFrame implements StyleMethods
 {
-	private final int POPUP_HEIGHT = 300;
-	private final int POPUP_WIDTH  = 100;
+	private final int POPUP_HEIGHT = 999;
+	private final int POPUP_WIDTH = 999;
 	//private final int DURATION = 5; // seconds for popup to exist before closing
 	
 	private JeopardyStyle style;
