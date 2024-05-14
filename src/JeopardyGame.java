@@ -30,8 +30,9 @@ import javax.swing.*;
 // JeopardyGame is-a JFrame
 public class JeopardyGame extends JFrame implements StyleMethods
 {
-	private final int WINDOW_HEIGHT = 400; // JeopardyGame has-a window height
+	private final int WINDOW_HEIGHT = 350; // JeopardyGame has-a window height
 	private final int WINDOW_WIDTH = 500; // JeopardyGame has-a window width
+	private final int SLIDE_WIDTH = 1500; // JeopardyGame has-a slide window width
 	private JLabel credits; // JeopardyGame has-a credits label
 	private JLabel playerPoints; // JeopardyGame has-a player points label
 	private JPanel categoryPanel; // JeopardyGame has-a category panel
@@ -146,7 +147,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		
 		// Setting size updates the GUI for some reason
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT+1);
-		this.setSize(1200, WINDOW_HEIGHT);
+		this.setSize(SLIDE_WIDTH, WINDOW_HEIGHT);
 	}
 	
 	// Loads regular screen
@@ -162,14 +163,26 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		
 		playerPoints.setText("Player 1: "+jeopardyModel.getPoints()[0]);
 		
+//		System.out.println(Arrays.deepToString(jeopardyModel.getCheckedGrid())); // Debug
 //		System.out.println(jeopardyModel.checkGameOver()); // Debug
-		if(jeopardyModel.checkGameOver())
+		if(jeopardyModel.checkGameOver()/*|| true*/)
 		{
 			// TODO
 			// Code to load if game over (all questions ran through)
 			// Load popup declaring winner if multiplayer
 			// Load final scores as well in popup
 			// Load percent right out of total possible score
+			
+			double totalPointsPossible = 0;
+			for (int i = 0; i<jeopardyModel.getGrid()[0].length; i++)
+			{
+				totalPointsPossible += Double.valueOf(jeopardyModel.getGrid()[0][i].toString()); // Sum of one row
+			}
+			totalPointsPossible *= jeopardyModel.getGrid().length; // Number of rows
+			double percentRight = (((double) jeopardyModel.getPoints()[0])/totalPointsPossible)*100;
+			
+			System.out.println(totalPointsPossible);
+			System.out.println(percentRight);
 		}
 	}
 	
