@@ -106,6 +106,5 @@ public class JeopardySlide extends JPanel implements StyleMethods
 		this.questionLabel.setFont(fonts[0]);
 		this.submissionButton.setFont(fonts[2]);
 		this.hintButton.setFont(fonts[3]);
-
 	}
 }

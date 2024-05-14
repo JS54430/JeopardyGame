@@ -29,7 +29,7 @@ public class JeopardyModel
 	private boolean[][] checkedGrid; // JeopardyModel has-a boolean grid (2D array)
 	private ArrayList<Object> questionAnswerGrid; // JeopardyModel has-a question answer grid
 	private ArrayList<String> categories; // JeopardyModel has-a ArrayList of strings which are categories
-	private int incrementPointValue = 100; // JeopardyModel has-a increment point value
+	private int incrementPointValue = 200; // JeopardyModel has-a increment point value
 	private JeopardyQAndA questionsAndAnswers; // JeopardyModel has-a JeopardyQAndA
 	private int playerCount; // JeopardyModel has-a player count
 	private int[] playerScores; // JeopardyModel has-a player scores

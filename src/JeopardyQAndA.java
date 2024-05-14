@@ -136,7 +136,6 @@ public class JeopardyQAndA
 		return getCategoryQuestionsAndAnswers(1).size()-1;
 	}
 	
-	// TODO Make this function unnecessary by changing model
 	// returns the array list of question content within questionsAndAnswers
 	public ArrayList<String> getQuestionContent(int row, int column)
 	{
