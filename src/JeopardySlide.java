@@ -26,7 +26,7 @@ import java.util.*;
 // JeopardySlide is-a JPanel, uses StyleMethods
 public class JeopardySlide extends JPanel implements StyleMethods 
 {
-	private ArrayList<String> questionContent; // JeopardySlide has-a array list string of question content (from JeopardyQAndA)
+	private ArrayList<Object> questionContent; // JeopardySlide has-a array list string of question content (from JeopardyQAndA)
 	private JeopardyStyle slideStyle; // JeopardySlide has-a slide style
 	private JLabel directions; // JeopardySlide has-a directions label
 	private JLabel questionLabel; // JeopardySlide has-a question label
@@ -38,7 +38,7 @@ public class JeopardySlide extends JPanel implements StyleMethods
 	private int points; // JeopardySlide has-a points
 
 	// Constructor for JeopardySlide
-	public JeopardySlide (JeopardyStyle style, ArrayList<String> questionContent, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
+	public JeopardySlide (JeopardyStyle style, ArrayList<Object> questionContent, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
 	{
 		// GUI stuff
 		this.slideStyle = style;
@@ -47,7 +47,7 @@ public class JeopardySlide extends JPanel implements StyleMethods
 		
 		// Top
 		this.directions = new JLabel("Submit the answer to the following question: ", SwingConstants.CENTER);
-		this.questionLabel = new JLabel(questionContent.get(0), SwingConstants.CENTER);
+		this.questionLabel = new JLabel((String) questionContent.get(0), SwingConstants.CENTER);
 		
 		// Center
 		this.submissionField = new JTextField();

@@ -30,7 +30,7 @@ public class JeopardyButton extends JButton implements StyleMethods
 	private JeopardyStyle buttonStyle; // JeopardyButton has-a style
 	private String text; // JeopardyButton has text
 	
-	// Constructor for JeopardyButton
+	// Constructor for JeopardyButton on grid
 	public JeopardyButton(int buttonRow, int buttonColumn, JeopardyStyle style, String text)
 	{
 		this.buttonRow = buttonRow;
@@ -43,12 +43,12 @@ public class JeopardyButton extends JButton implements StyleMethods
 		setFonts();
 	}
 	
-	// Constructor for JeopardyButton
+	// Constructor for JeopardyButton on slide
 	public JeopardyButton(JeopardyStyle style, String text)
 	{
 		this.buttonStyle = style;
 		this.text = text;
-		this.setText(text);
+		this.setText(this.text);
 		
 		setColors();
 		setFonts();

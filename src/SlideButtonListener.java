@@ -27,7 +27,7 @@ public class SlideButtonListener implements ActionListener
 {
 	private JeopardyStyle jeopardyStyle; // SlideButtonListener has-a style
 	private String buttonBehavior; // SlideButtonListener has-a button behavior
-	private ArrayList<String> questionContent; // SlideButtonListener has-a question content
+	private ArrayList<Object> questionContent; // SlideButtonListener has-a question content
 	private JTextField submissionField; // SlideButtonListener has-a submission field
 	private String playerAnswer; // SlideButtonListener has-a player answer
 	private String trueAnswer; // SlideButtonListener has-a true answer
@@ -36,7 +36,7 @@ public class SlideButtonListener implements ActionListener
 	private int points; // SlideButtonListener has-a points
 	
 	// Hint listener
-	public SlideButtonListener(JeopardyStyle jeopardyStyle, String buttonBehavior, ArrayList<String> questionContent)
+	public SlideButtonListener(JeopardyStyle jeopardyStyle, String buttonBehavior, ArrayList<Object> questionContent)
 	{
 		this.jeopardyStyle = jeopardyStyle;
 		this.buttonBehavior = buttonBehavior;
@@ -44,7 +44,7 @@ public class SlideButtonListener implements ActionListener
 	}
 	
 	// Answer listener
-	public SlideButtonListener(JeopardyStyle jeopardyStyle, String buttonBehavior, ArrayList<String> questionContent, JTextField submissionField, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
+	public SlideButtonListener(JeopardyStyle jeopardyStyle, String buttonBehavior, ArrayList<Object> questionContent, JTextField submissionField, JeopardyGame jeopardyGame, JeopardyModel jeopardyModel, int points)
 	{
 		this.jeopardyStyle = jeopardyStyle;
 		this.buttonBehavior = buttonBehavior;
@@ -53,7 +53,7 @@ public class SlideButtonListener implements ActionListener
 		this.jeopardyGame = jeopardyGame;
 		this.jeopardyModel = jeopardyModel;
 		this.points = points;
-		this.trueAnswer = questionContent.get(1);
+		this.trueAnswer = (String) questionContent.get(1);
 	}
 	
 	// Determines if the answer is correct or incorrect
@@ -79,7 +79,7 @@ public class SlideButtonListener implements ActionListener
 		{
 			// Display hint
 			// Use hint constructor
-			String hint = questionContent.get(2);
+			String hint = (String) questionContent.get(2);
 			new JeopardyHintPopup(jeopardyStyle, hint);
 		}
 		else

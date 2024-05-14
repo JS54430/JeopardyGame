@@ -27,6 +27,7 @@ public class JeopardyModel
 	private int gridWidth; // JeopardyModel has-a grid width
 	private Object[][] grid; // JeopardyModel has-a grid (2D array)
 	private boolean[][] checkedGrid; // JeopardyModel has-a boolean grid (2D array)
+	private ArrayList<Object> questionAnswerGrid; // JeopardyModel has-a question answer grid
 	private ArrayList<String> categories; // JeopardyModel has-a ArrayList of strings which are categories
 	private int incrementPointValue = 100; // JeopardyModel has-a increment point value
 	private JeopardyQAndA questionsAndAnswers; // JeopardyModel has-a JeopardyQAndA
@@ -38,35 +39,61 @@ public class JeopardyModel
 	{
 		this.questionsAndAnswers = QandA;
 		this.categories = questionsAndAnswers.getCategories();
-		this.gridHeight = questionsAndAnswers.getNumberOfQuestionsPerCategory();
+		
+		/*
 		this.gridWidth = categories.size();
+		//this.gridHeight = questionsAndAnswers.getCategoryQuestionsAndAnswers(1).size();
+		this.gridHeight = questionsAndAnswers.getNumberOfQuestionsPerCategory();
+		*/
+		this.gridWidth = questionsAndAnswers.getNumberOfQuestionsPerCategory();
+		//this.gridHeight = questionsAndAnswers.getCategoryQuestionsAndAnswers(1).size();
+		this.gridHeight = categories.size();
+		
 		this.playerCount = 1;
 		this.playerScores = new int[this.playerCount];
+		
+//		System.out.println("Model width: "+gridWidth);
+//		System.out.println("Model height: "+gridHeight);
+//		System.out.println(questionsAndAnswers.getCategoryQuestionsAndAnswers(1).toString());
+//		System.out.println(questionsAndAnswers.getQAndA().toString());
 
 		makeGrid();
+		
+//		System.out.println(Arrays.deepToString(grid)); // debug
+//		System.out.println(getQuestionAnswerGrid().toString()); // debug
+//		System.out.println(getQuestionAnswerRow(0).toString()); // debug
+//		System.out.println(getQuestionAnswerItem(0,0)); // debug
 	}
-	
-	// Makes the grid for Jeopardy as well as the checkedGrid
+	 
+	// Makes the grid for JeopardyGame, checkedGrid, and questionAnswerGrid
 	public void makeGrid()
 	{
 		this.grid = new Object[gridHeight][gridWidth]; // Grid for categories and point values
 		this.checkedGrid = new boolean[gridHeight][gridWidth]; // Grid for checking if all the questions have been answered
+		this.questionAnswerGrid = new ArrayList<Object>(); // Grid for storing all of the answers for JeopardyGame
 		
-		for(int i = 0; i < gridWidth; i++) 
+//		System.out.println(Arrays.deepToString(grid));
+		
+//		for(int j = 0; j < gridWidth; j++) 
+//		{
+//			this.grid[0][j] = categories.get(j); // Add category
+//		}
+
+		for(int i = 0; i < gridHeight; i++) 
 		{
-			for(int j = 0; j < gridHeight; j++) 
+			ArrayList<Object> row = new ArrayList<Object>();
+			for(int j = 0; j < gridWidth; j++) 
 			{
-				if (i == 0) 
-				{
-					this.grid[i][j] = categories.get(j); // Add category
-					this.checkedGrid[i][j] = true; // Category row should be set to true
-				}
-				else 
-				{
-					this.grid[i][j] = i*incrementPointValue; // Add point value
-					this.checkedGrid[i][j] = false; // initialize all values on checked grid to false, no values have gone through yet
-				}
+//				System.out.println("(i,j): ("+i+","+j+")"); // Debug
+				
+				this.grid[i][j] = (j+1)*incrementPointValue; // Add point value
+				this.checkedGrid[i][j] = false; // initialize all values on checked grid to false, no values have gone through yet
+				
+//				System.out.println(questionsAndAnswers.getQuestionContent(i, j+1)); // Debug
+				
+				row.add(questionsAndAnswers.getQuestionContent(i, j+1));
 			}
+			questionAnswerGrid.add(row);
 		}
 	}
 	
@@ -80,6 +107,24 @@ public class JeopardyModel
 	public boolean[][] getCheckedGrid()
 	{
 		return checkedGrid;
+	}
+	
+	// Returns the questionAnswerGrid
+	public ArrayList<Object> getQuestionAnswerGrid()
+	{
+		return questionAnswerGrid;
+	}
+	
+	// Returns the questionAnswerGrid row specified
+	public ArrayList<Object> getQuestionAnswerRow(int row)
+	{
+		return (ArrayList<Object>) questionAnswerGrid.get(row);
+	}
+	
+	// Returns the questionAnswerGrid ArrayList<Object> at row and column specified (the question's content)
+	public ArrayList<Object> getQuestionAnswerItem(int row, int column)
+	{
+		return (ArrayList<Object>) getQuestionAnswerRow(row).get(column);
 	}
 	
 	// Sets checkedGrid button row and column to true

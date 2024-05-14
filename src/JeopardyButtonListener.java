@@ -30,30 +30,34 @@ public class JeopardyButtonListener implements ActionListener
 	private JeopardyModel jeopardyModel; // JeopardyButtonListener has-a jeopardy model
 	private JeopardyGame jeopardyGame; // JeopardyButtonListener has-a jeopardy game
 	private JeopardyButton jeopardyButton; // JeopardyButtonListener has-a jeopardy button
-	private JeopardyQAndA questionsAndAnswers; // JeopardyButtonListener has-a JeopardyQAndA
 	private JeopardyStyle jeopardyStyle; // JeopardyButtonListener has-a jeopardy style
 	private int buttonRow; // JeopardyButtonListener has-a button row
 	private int buttonColumn; // JeopardyButtonListener has-a button column
-	private ArrayList<String> questionContent; // JeopardyButtonListener has-a questionContent 
+	private ArrayList<Object> questionContent; // JeopardyButtonListener has-a questionContent 
 	private int points; // JeopardyButtonListener has-a points
 	
 	// Constructor for JeopardyButtonListener
-	public JeopardyButtonListener(JeopardyModel jeopardyModel, JeopardyGame jeopardyGame, JeopardyQAndA questionsAndAnswers, JeopardyStyle jeopardyStyle, JeopardyButton jeopardyButton)
+	public JeopardyButtonListener(JeopardyModel jeopardyModel, JeopardyGame jeopardyGame, JeopardyStyle jeopardyStyle, ArrayList<Object> questionContent, JeopardyButton jeopardyButton)
 	{
 		this.jeopardyModel = jeopardyModel;
 		this.jeopardyGame = jeopardyGame;
 		this.jeopardyButton = jeopardyButton;
-		this.questionsAndAnswers = questionsAndAnswers;
 		this.jeopardyStyle = jeopardyStyle;
-		
+
 		// Button coordinates for which button was clicked
 		this.buttonRow = jeopardyButton.getRow();
 		this.buttonColumn = jeopardyButton.getColumn();
+		this.questionContent = questionContent;
+		this.points = (int) jeopardyModel.getGrid()[buttonRow][buttonColumn];
+		
+		//System.out.println(questionContent);
 		
 		// Uses button coordinates to access to question content
-		this.questionContent = questionsAndAnswers.getQuestionContent(buttonRow, buttonColumn);
-		
-		this.points = (int) jeopardyModel.getGrid()[jeopardyButton.getRow()][jeopardyButton.getColumn()];
+		//System.out.println(questionsAndAnswers.getQuestionContent(buttonRow, buttonColumn));
+		//System.out.println(buttonRow+", " + (int) (buttonColumn+1) );
+		//System.out.println(questionsAndAnswers.getQuestionContent(buttonRow, buttonColumn+1));
+		//this.questionContent = questionsAndAnswers.getQuestionContent(buttonRow, buttonColumn);
+		//this.points = (int) jeopardyModel.getGrid()[jeopardyButton.getRow()][jeopardyButton.getColumn()];
 	}
 	
 	// When (usable) button is clicked

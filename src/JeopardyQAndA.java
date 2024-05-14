@@ -54,9 +54,11 @@ public class JeopardyQAndA
 			ArrayList<String> questionAnswerHintArray = null; // Used for nested ArrayLists
 			
 			// Obtain content from the file as long as there is content to be obtained 
-			while(scan.hasNext()) 
+			while(scan.hasNextLine()) 
 			{ 
-				 String data = scan.next(); // scan next, variable saved as 'data'
+				 String data = scan.nextLine(); // scan next, variable saved as 'data'
+				 
+//				 System.out.println(data); // debug
 				 
 				 // If file reads with the indicator in scan, then
 				 if (data.startsWith(categoryIndicator))
@@ -131,13 +133,16 @@ public class JeopardyQAndA
 	// returns number of questions per category
 	public int getNumberOfQuestionsPerCategory()
 	{
-		return getCategoryQuestionsAndAnswers(1).size() - 1;
+		return getCategoryQuestionsAndAnswers(1).size()-1;
 	}
 	
+	// TODO Make this function unnecessary by changing model
 	// returns the array list of question content within questionsAndAnswers
 	public ArrayList<String> getQuestionContent(int row, int column)
 	{
-		return (ArrayList<String>) questionsAndAnswers.get(row).get(column+1);
+//		System.out.println(questionsAndAnswers.get(row).get(column));
+//		System.out.println(questionsAndAnswers.get(row).get(column+1));
+		return (ArrayList<String>) questionsAndAnswers.get(row).get(column);
 	}
 	
 }

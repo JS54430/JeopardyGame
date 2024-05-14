@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Arrays;
-
+import java.util.*;
 import javax.swing.*;
 
 /**
@@ -17,6 +16,8 @@ import javax.swing.*;
  * How to remove all components from a JFrame in Java? (n.d.). Stack Overflow. https://stackoverflow.com/questions/9347076/how-to-remove-all-components-from-a-jframe-in-java
  *  
  * "How to Center JLabel in Jframe Swing?" Stack Overflow, stackoverflow.com/questions/19506769/how-to-center-jlabel-in-jframe-swing.
+ * 
+ * "Java JFrame Size: How to Set the JFrame Size." Scala, Java, Unix, MacOS Tutorials (page 1) | Alvinalexander.com, 6 Aug. 2022, alvinalexander.com/java/java-set-jframe-size/.
  *  
  * Version/date: Version 1, 5/13/2024
  * 
@@ -29,7 +30,7 @@ import javax.swing.*;
 // JeopardyGame is-a JFrame
 public class JeopardyGame extends JFrame implements StyleMethods
 {
-	private final int WINDOW_HEIGHT = 300; // JeopardyGame has-a window height
+	private final int WINDOW_HEIGHT = 400; // JeopardyGame has-a window height
 	private final int WINDOW_WIDTH = 500; // JeopardyGame has-a window width
 	private JLabel credits; // JeopardyGame has-a credits label
 	private JLabel playerPoints; // JeopardyGame has-a player points label
@@ -53,13 +54,11 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.pack();
 		
 		// Set the title of the window
 		this.setTitle("Jeopardy Game");
 		
-		// Set the size of the window.
-		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	    //this.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
 		
 		// JPanel declarations
 		this.categoryPanel = new JPanel(new FlowLayout());
@@ -80,37 +79,58 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		// Creating the grid of jeopardy
 		Object[][] grid = jeopardyModel.getGrid();
 		this.jeopardyGrid = new JeopardyButton[grid.length][grid[0].length]; // null array
+		ArrayList<String> categories = questionsAndAnswers.getCategories();
 		
-		// For loop that creates the grid of jeopardy categories (JLabel) and buttons (JeopardyButton)
+		// For loop that creates the grid of jeopardy categories (JLabel)
+//		for (int i = 0; i<categories.size(); i++)
+//		{
+//			JLabel currentCategory = new JLabel( (String) categories.get(i) );
+//			categoryPanel.add(currentCategory);
+//		}
+		
+		// TODO Rewrite this for loop with new model functions
+		/*
+		// For loop that creates the grid of jeopardy buttons (JeopardyButton)
+		for (int j = 0; j<grid.length-1; j++)
+		{
+			// Add JeopardyButtons to all other rows
+			for (int k = 0; k<grid[j].length; k++)
+			{
+				//System.out.println(k);
+						
+				JeopardyButton button = new JeopardyButton(j, k, jeopardyStyle, grid[j][k].toString());
+				jeopardyGrid[j][k] = button;
+				
+				button.addActionListener(new JeopardyButtonListener(jeopardyModel, this, this.questionsAndAnswers, jeopardyStyle, button));
+				
+				pointButtonRow.add(button);
+			}
+			pointQuestionPanel.add(pointButtonRow);
+			pointButtonRow = new JPanel(new GridLayout());
+		}
+		*/
+		
+		// For loop that creates the grid of jeopardy buttons (JeopardyButton)
 		for (int j = 0; j<grid.length; j++)
 		{
-			// if 0th row
-			if (j == 0)
-			 {
-				// Add categories to row
-				for (int i = 0; i<grid[0].length; i++)
-				{
-					JLabel currentCategory = new JLabel( (String) grid[0][i] );
-					categoryPanel.add(currentCategory);
-				}
-			}
-			else
+			JLabel currentCategory = new JLabel( (String) categories.get(j) );
+			pointButtonRow.add(currentCategory);
+			// Add JeopardyButtons to all other rows
+			for (int k = 0; k<grid[j].length; k++)
 			{
-				// Add JeopardyButtons to all other rows
-				for (int k = 0; k<grid[j].length; k++)
-				{
-					JeopardyButton button = new JeopardyButton(j, k, jeopardyStyle, grid[j][k].toString());
-					jeopardyGrid[j][k] = button;
-					
-					button.addActionListener(new JeopardyButtonListener(jeopardyModel, this, this.questionsAndAnswers, jeopardyStyle, button));
-					
-					pointButtonRow.add(button);
-				}
-				pointQuestionPanel.add(pointButtonRow);
-				pointButtonRow = new JPanel(new GridLayout());
+//				System.out.println("(j,k): ("+j+","+k+")"); // Debug
+				
+				JeopardyButton button = new JeopardyButton(j, k, jeopardyStyle, grid[j][k].toString());
+				jeopardyGrid[j][k] = button;
+				ArrayList<Object> questionContent = jeopardyModel.getQuestionAnswerItem(j, k);
+				
+				button.addActionListener(new JeopardyButtonListener(jeopardyModel, this, jeopardyStyle, questionContent, button));
+				
+				pointButtonRow.add(button);
 			}
+			pointQuestionPanel.add(pointButtonRow);
+			pointButtonRow = new JPanel(new GridLayout());
 		}
-		
 		
 		// Add all subpanels to gamePanel
 		gamePanel.add(categoryPanel, BorderLayout.NORTH);
@@ -139,6 +159,9 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		 * 
 		 */
 		
+		this.pack();
+		// Set the size of the window.
+		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		this.setVisible(true);
 	}
 	
@@ -152,7 +175,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		
 		// Setting size updates the GUI for some reason
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT+1);
-		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		this.setSize(1200, WINDOW_HEIGHT);
 	}
 	
 	// Loads regular screen
@@ -191,11 +214,15 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		JeopardyStyle styleExample1 = new JeopardyStyle(Color.RED, Color.YELLOW, Color.PINK, Color.BLACK, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2);
 
 		// Fill with the content for the Questions and Answers			
-		JeopardyQAndA exampleQAndA = new JeopardyQAndA("exampleQAndA.csv");
 		
-		JeopardyModel exampleModel = new JeopardyModel(exampleQAndA);
+		//JeopardyQAndA JeopardyQAndA = new JeopardyQAndA("exampleQAndA.csv");
+		JeopardyQAndA JeopardyQAndA = new JeopardyQAndA("JeopardyQAndA.csv");
 		
-		JeopardyGame exampleGame = new JeopardyGame(styleExample1, exampleModel, exampleQAndA);
+		JeopardyModel exampleModel = new JeopardyModel(JeopardyQAndA);
+		
+//		System.out.println(Arrays.deepToString(exampleModel.getGrid()));
+		
+		JeopardyGame exampleGame = new JeopardyGame(styleExample1, exampleModel, JeopardyQAndA);
 	}
 
 	@Override
