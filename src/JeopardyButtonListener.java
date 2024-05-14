@@ -49,15 +49,6 @@ public class JeopardyButtonListener implements ActionListener
 		this.buttonColumn = jeopardyButton.getColumn();
 		this.questionContent = questionContent;
 		this.points = (int) jeopardyModel.getGrid()[buttonRow][buttonColumn];
-		
-		//System.out.println(questionContent);
-		
-		// Uses button coordinates to access to question content
-		//System.out.println(questionsAndAnswers.getQuestionContent(buttonRow, buttonColumn));
-		//System.out.println(buttonRow+", " + (int) (buttonColumn+1) );
-		//System.out.println(questionsAndAnswers.getQuestionContent(buttonRow, buttonColumn+1));
-		//this.questionContent = questionsAndAnswers.getQuestionContent(buttonRow, buttonColumn);
-		//this.points = (int) jeopardyModel.getGrid()[jeopardyButton.getRow()][jeopardyButton.getColumn()];
 	}
 	
 	// When (usable) button is clicked

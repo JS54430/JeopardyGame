@@ -81,35 +81,6 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		this.jeopardyGrid = new JeopardyButton[grid.length][grid[0].length]; // null array
 		ArrayList<String> categories = questionsAndAnswers.getCategories();
 		
-		// For loop that creates the grid of jeopardy categories (JLabel)
-//		for (int i = 0; i<categories.size(); i++)
-//		{
-//			JLabel currentCategory = new JLabel( (String) categories.get(i) );
-//			categoryPanel.add(currentCategory);
-//		}
-		
-		// TODO Rewrite this for loop with new model functions
-		/*
-		// For loop that creates the grid of jeopardy buttons (JeopardyButton)
-		for (int j = 0; j<grid.length-1; j++)
-		{
-			// Add JeopardyButtons to all other rows
-			for (int k = 0; k<grid[j].length; k++)
-			{
-				//System.out.println(k);
-						
-				JeopardyButton button = new JeopardyButton(j, k, jeopardyStyle, grid[j][k].toString());
-				jeopardyGrid[j][k] = button;
-				
-				button.addActionListener(new JeopardyButtonListener(jeopardyModel, this, this.questionsAndAnswers, jeopardyStyle, button));
-				
-				pointButtonRow.add(button);
-			}
-			pointQuestionPanel.add(pointButtonRow);
-			pointButtonRow = new JPanel(new GridLayout());
-		}
-		*/
-		
 		// For loop that creates the grid of jeopardy buttons (JeopardyButton)
 		for (int j = 0; j<grid.length; j++)
 		{

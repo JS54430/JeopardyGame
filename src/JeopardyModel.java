@@ -51,11 +51,6 @@ public class JeopardyModel
 		
 		this.playerCount = 1;
 		this.playerScores = new int[this.playerCount];
-		
-//		System.out.println("Model width: "+gridWidth);
-//		System.out.println("Model height: "+gridHeight);
-//		System.out.println(questionsAndAnswers.getCategoryQuestionsAndAnswers(1).toString());
-//		System.out.println(questionsAndAnswers.getQAndA().toString());
 
 		makeGrid();
 		
@@ -71,13 +66,6 @@ public class JeopardyModel
 		this.grid = new Object[gridHeight][gridWidth]; // Grid for categories and point values
 		this.checkedGrid = new boolean[gridHeight][gridWidth]; // Grid for checking if all the questions have been answered
 		this.questionAnswerGrid = new ArrayList<Object>(); // Grid for storing all of the answers for JeopardyGame
-		
-//		System.out.println(Arrays.deepToString(grid));
-		
-//		for(int j = 0; j < gridWidth; j++) 
-//		{
-//			this.grid[0][j] = categories.get(j); // Add category
-//		}
 
 		for(int i = 0; i < gridHeight; i++) 
 		{
