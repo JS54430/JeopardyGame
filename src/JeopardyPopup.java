@@ -11,7 +11,7 @@ import javax.swing.*;
  * 
  * References:
  *  
- * Version/date: Version 1, 5/13/2024
+ * Version/date: Version 1, 5/14/2024
  * 
  * Responsibilities of class:
  * GUI file
@@ -26,7 +26,7 @@ public abstract class JeopardyPopup extends JFrame implements StyleMethods
 {
 	private final int POPUP_WIDTH = 999; // JeopardyPopup has-a width
 	private final int POPUP_HEIGHT = 999; // JeopardyPopup has-a height
-	//private final int DURATION = 5; // seconds for popup to exist before closing
+	private final int DURATION = 99; // seconds for popup to exist before closing
 	
 	private JeopardyStyle style; // JeopardyPopup has-a style
 	private JLabel textToPopup; // JeopardyPopup has-a text to popup
