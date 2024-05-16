@@ -51,7 +51,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		// TODO Use style attributes
 		this.jeopardyStyle = style;
 		this.jeopardyModel = model;
-		this.questionsAndAnswers = questionsAndAnswers; // Redundant
+		this.questionsAndAnswers = questionsAndAnswers;
 		
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +63,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		
 		// JPanel declarations
 		this.categoryPanel = new JPanel(new FlowLayout());
-		this.pointQuestionPanel = new JPanel();
+		this.pointQuestionPanel = new JPanel(new GridLayout(this.questionsAndAnswers.getCategories().size(), 1));
 		this.pointButtonRow = new JPanel(new GridLayout());
 		this.bottomPanel = new JPanel(new BorderLayout());
 		this.gamePanel = new JPanel(new BorderLayout());
@@ -74,8 +74,8 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		// Author Panel
 		this.credits = new JLabel("Created by Jake Salzer and Hernany Torres.", SwingConstants.CENTER);
 		
-		bottomPanel.add(playerPoints, BorderLayout.CENTER);
-		bottomPanel.add(credits, BorderLayout.SOUTH);
+		this.bottomPanel.add(playerPoints, BorderLayout.CENTER);
+		this.bottomPanel.add(credits, BorderLayout.SOUTH);
 		
 		// Creating the grid of jeopardy
 		Object[][] grid = jeopardyModel.getGrid();
@@ -85,9 +85,20 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		// For loop that creates the grid of jeopardy buttons (JeopardyButton)
 		for (int j = 0; j<grid.length; j++)
 		{
+			// Point button row colors
+			pointButtonRow.setBackground(new Color(6,12,233));
+			pointButtonRow.setForeground(Color.WHITE);
+			
+			// Current category JLabel 
 			JLabel currentCategory = new JLabel( (String) categories.get(j) );
+			
+			// Makes text white
+			currentCategory.setForeground(Color.WHITE);
+			
+			// Adds category to row
 			pointButtonRow.add(currentCategory);
-			// Add JeopardyButtons to all other rows
+			
+			// Add JeopardyButtons to rest of row
 			for (int k = 0; k<grid[j].length; k++)
 			{
 //				System.out.println("(j,k): ("+j+","+k+")"); // Debug
@@ -100,7 +111,9 @@ public class JeopardyGame extends JFrame implements StyleMethods
 				
 				pointButtonRow.add(button);
 			}
+			// Row added
 			pointQuestionPanel.add(pointButtonRow);
+			// Resets pointButtonRow
 			pointButtonRow = new JPanel(new GridLayout());
 		}
 		
@@ -195,7 +208,7 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		Font testFonts[] = {fontEx1, fontEx1, fontEx1, fontEx2, fontEx2};
 		JeopardyStyle styleExample2 = new JeopardyStyle(testColors, testFonts);
 		
-		JeopardyStyle styleExample1 = new JeopardyStyle(Color.RED, Color.YELLOW, Color.PINK, Color.BLACK, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2);
+		JeopardyStyle styleExample1 = new JeopardyStyle(new Color(6,12,233), Color.YELLOW, Color.PINK, Color.BLACK, fontEx1, fontEx1, fontEx1, fontEx2, fontEx2);
 
 		// Fill with the content for the Questions and Answers			
 		
@@ -215,7 +228,15 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		Color[] colors = this.jeopardyStyle.getStyleColors();
 		this.setBackground(colors[0]);
 		this.gamePanel.setBackground(colors[0]);
-		// Add to as necessary
+		this.categoryPanel.setBackground(colors[0]);
+		this.pointQuestionPanel.setBackground(colors[0]); 
+		this.pointButtonRow.setBackground(colors[0]);
+		
+		this.bottomPanel.setBackground(colors[0]);
+		this.bottomPanel.setForeground(Color.WHITE);
+		this.bottomPanel.setOpaque(true);
+		this.playerPoints.setForeground(Color.WHITE);
+		this.credits.setForeground(Color.WHITE);
 	}
 
 	@Override
