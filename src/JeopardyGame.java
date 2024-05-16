@@ -18,8 +18,10 @@ import javax.swing.*;
  * "How to Center JLabel in Jframe Swing?" Stack Overflow, stackoverflow.com/questions/19506769/how-to-center-jlabel-in-jframe-swing.
  * 
  * "Java JFrame Size: How to Set the JFrame Size." Scala, Java, Unix, MacOS Tutorials (page 1) | Alvinalexander.com, 6 Aug. 2022, alvinalexander.com/java/java-set-jframe-size/.
+ * 
+ * "Font.createFont(..) Set Color and Size (java.awt.Font)." Stack Overflow, stackoverflow.com/questions/16761630/font-createfont-set-color-and-size-java-awt-font.
  *  
- * Version/date: Version 1, 5/13/2024
+ * Version/date: Version 1, 5/16/2024
  * 
  * Responsibilities of class:
  * GUI file
