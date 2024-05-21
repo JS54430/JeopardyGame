@@ -84,6 +84,8 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		this.jeopardyGrid = new JeopardyButton[grid.length][grid[0].length]; // null array
 		ArrayList<String> categories = questionsAndAnswers.getCategories();
 		
+//		System.out.println(Arrays.deepToString(grid)); // debug
+		
 		// For loop that creates the grid of jeopardy buttons (JeopardyButton)
 		for (int j = 0; j<grid.length; j++)
 		{
@@ -137,14 +139,6 @@ public class JeopardyGame extends JFrame implements StyleMethods
 		
 		// JeopardyGame adds gamePanel (main game)
 		this.add(gamePanel);
-		
-		// Implement any other final GUI stuff here
-		/*
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
 		
 		this.pack();
 		// Set the size of the window.
